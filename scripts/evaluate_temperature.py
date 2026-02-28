@@ -39,9 +39,12 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Loading model: {model_name} on device: {device} ...")
 
-    # We'll initialize the HFLM once and update its gen_kwargs inside the loop.
-    # If HFLM doesn't accept dynamic updates to gen_kwargs, we'll re-init inside the loop (handled below).
-    lm = None
+    # Initialize the HFLM once
+    lm = HFLM(
+        pretrained=model_name, 
+        device=device,
+        backend="causal"
+    )
 
     for temp in temperatures:
         print("\n======================================")
@@ -55,38 +58,15 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
 
         gen_kwargs = {"temperature": hf_temp, "do_sample": do_sample, "top_p": 1.0}
 
-        start_time = time.time()
-        try:
-            # Try to reuse the same HFLM instance and set gen_kwargs attribute if supported
-            if lm is None:
-                lm = HFLM(pretrained=model_name, device=device)
-            # Try to set a gen_kwargs attribute on the HFLM wrapper. This may or may not be used by the harness.
-            try:
-                setattr(lm, "gen_kwargs", gen_kwargs)
-            except Exception:
-                # If we cannot set it, fallback to re-initialize per-temp with a gen_kwargs constructor arg (some versions accept it).
-                lm = HFLM(pretrained=model_name, device=device, gen_kwargs=gen_kwargs)
-        except Exception as e:
-            print("Failed to initialize or update HFLM model. Error:")
-            print(e)
-            print("Attempting to re-initialize HFLM for this temperature...")
-            try:
-                lm = HFLM(pretrained=model_name, device=device, gen_kwargs=gen_kwargs)
-            except Exception as e2:
-                print("Re-initialization also failed. Aborting this temperature with an error.")
-                print(e2)
-                elapsed = time.time() - start_time
-                results_summary.append({
-                    "temperature": temp,
-                    "error": str(e2),
-                    "time_seconds": elapsed
-                })
-                # Save partial results and continue
-                out_file = Path(output_dir) / f"{model_name.replace('/', '_')}_{dataset}_results.json"
-                with open(out_file, "w") as f:
-                    json.dump(results_summary, f, indent=2)
-                continue
+        # Override the generation kwargs directly on the model instance
+        # lm-eval's HFLM uses these kwargs when generating
+        if hasattr(lm, 'model_generate_args'):
+            lm.model_generate_args = gen_kwargs
+        else:
+             lm._model_generate_args = gen_kwargs
 
+        start_time = time.time()
+        
         # Now run lm_eval.simple_evaluate for the given dataset
         try:
             results = lm_eval.simple_evaluate(
@@ -94,6 +74,7 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
                 tasks=[dataset],
                 num_fewshot=0,
                 limit=max_samples,
+                gen_kwargs=f"temperature={hf_temp},do_sample={do_sample},top_p=1.0"
             )
         except Exception as e:
             # If the harness needs gen_kwargs passed differently, capture the error and save partial results
@@ -112,9 +93,9 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
 
         elapsed = time.time() - start_time
 
-        # Extract accuracy (the metric name can vary by task)
-        task_results = results.get("results", {}).get(dataset, {})
-        acc = task_results.get("acc,none", task_results.get("exact_match,none", None))
+        task_results = results.get('results', {}).get(dataset, {})
+        # GSM8K uses 'exact_match,strict-match' usually in newer lm-eval versions
+        acc = task_results.get('exact_match,strict-match', task_results.get('exact_match,flexible-extract', task_results.get('acc,none', 0.0)))
 
         print(f"Result for T={temp}: {acc} (Time: {elapsed:.2f}s)")
 
@@ -126,8 +107,6 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
         }
         results_summary.append(record)
 
-        # Save incremental results (overwrites each loop but keeps full list)
-        timestamp = int(time.time())
         out_file = Path(output_dir) / f"{model_name.replace('/', '_')}_{dataset}_results.json"
         with open(out_file, "w") as f:
             json.dump(results_summary, f, indent=2)
