@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 """
 Evaluate a HuggingFace model with lm-eval over a sweep of temperatures.
-
-Notes:
-- This script tries to be robust but depends on the lm-eval harness API (HFLM).
-- If lm-eval/HFLM changes, you may need to adjust how gen_kwargs are passed.
-- For small tests use --limit small (e.g. 5 or 10). Full datasets will take long.
+Supports 4-bit and 8-bit quantization for larger models.
 """
 
 import argparse
@@ -13,53 +9,66 @@ import json
 import os
 import time
 from pathlib import Path
-
-# torch is used to detect device; import early to avoid NameError
 import torch
 
-# lm-eval imports
 try:
     import lm_eval
     from lm_eval.models.huggingface import HFLM
     from lm_eval import simple_evaluate
-except Exception:
-    print("Missing lm-eval or related packages. See the setup script to install dependencies.")
-    raise
+except ImportError:
+    print("Missing lm-eval. Please install it: pip install lm-eval")
+    exit(1)
 
-def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: str):
-    """
-    Runs evaluation for a single model and dataset across a range of temperatures.
-    """
+def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: str, quantization: str):
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-    # 0.0 to 2.0 with 0.1 steps
     temperatures = [round(i * 0.1, 1) for i in range(21)]
     results_summary = []
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Loading model: {model_name} on device: {device} ...")
+    print(f"Loading model: {model_name} with quantization: {quantization} ...")
+
+    # Setup kwargs for model initialization
+    kwargs = {
+        "pretrained": model_name,
+        "backend": "causal"
+    }
+    
+    if quantization == "4bit":
+        kwargs["load_in_4bit"] = True
+    elif quantization == "8bit":
+        kwargs["load_in_8bit"] = True
+    else:
+        kwargs["device"] = "cuda" if torch.cuda.is_available() else "cpu"
 
     # Initialize the HFLM once
-    lm = HFLM(
-        pretrained=model_name, 
-        device=device,
-        backend="causal"
-    )
+    try:
+        lm = HFLM(**kwargs)
+    except Exception as e:
+        print(f"Failed to load model using simple kwargs. Trying 'model_kwargs' dict. Error: {e}")
+        # Fallback for some lm_eval versions that expect model_kwargs
+        fallback_kwargs = {
+            "pretrained": model_name,
+            "backend": "causal",
+            "model_kwargs": {}
+        }
+        if quantization == "4bit":
+            fallback_kwargs["model_kwargs"]["load_in_4bit"] = True
+        elif quantization == "8bit":
+            fallback_kwargs["model_kwargs"]["load_in_8bit"] = True
+        else:
+            fallback_kwargs["device"] = "cuda" if torch.cuda.is_available() else "cpu"
+        lm = HFLM(**fallback_kwargs)
 
     for temp in temperatures:
         print("\n======================================")
         print(f"Evaluating T={temp}")
         print("======================================")
 
-        # At T=0.0, do greedy decoding. Otherwise, use sampling.
         do_sample = temp > 0.0
-        # When do_sample=False, temperature must be 1.0 or None for HF; use 1.0 to ensure greedy behavior.
         hf_temp = temp if do_sample else 1.0
-
         gen_kwargs = {"temperature": hf_temp, "do_sample": do_sample, "top_p": 1.0}
 
         # Override the generation kwargs directly on the model instance
-        # lm-eval's HFLM uses these kwargs when generating
         if hasattr(lm, 'model_generate_args'):
             lm.model_generate_args = gen_kwargs
         else:
@@ -67,35 +76,31 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
 
         start_time = time.time()
         
-        # Now run lm_eval.simple_evaluate for the given dataset
         try:
             results = lm_eval.simple_evaluate(
                 model=lm,
                 tasks=[dataset],
                 num_fewshot=0,
-                limit=max_samples,
+                limit=max_samples if max_samples > 0 else None,
                 gen_kwargs=f"temperature={hf_temp},do_sample={do_sample},top_p=1.0"
             )
         except Exception as e:
-            # If the harness needs gen_kwargs passed differently, capture the error and save partial results
-            print(f"lm_eval.simple_evaluate failed at T={temp} with error:")
-            print(e)
+            print(f"Evaluation failed at T={temp} with error: {e}")
             elapsed = time.time() - start_time
             results_summary.append({
                 "temperature": temp,
                 "error": str(e),
                 "time_seconds": elapsed
             })
-            out_file = Path(output_dir) / f"{model_name.replace('/', '_')}_{dataset}_results.json"
-            with open(out_file, "w") as f:
-                json.dump(results_summary, f, indent=2)
             continue
 
         elapsed = time.time() - start_time
-
         task_results = results.get('results', {}).get(dataset, {})
-        # GSM8K uses 'exact_match,strict-match' usually in newer lm-eval versions
-        acc = task_results.get('exact_match,strict-match', task_results.get('exact_match,flexible-extract', task_results.get('acc,none', 0.0)))
+        
+        # Extract accuracy
+        acc = task_results.get('exact_match,strict-match', 
+              task_results.get('exact_match,flexible-extract', 
+              task_results.get('acc,none', 0.0)))
 
         print(f"Result for T={temp}: {acc} (Time: {elapsed:.2f}s)")
 
@@ -107,28 +112,31 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
         }
         results_summary.append(record)
 
+        # Save incremental results
         out_file = Path(output_dir) / f"{model_name.replace('/', '_')}_{dataset}_results.json"
         with open(out_file, "w") as f:
             json.dump(results_summary, f, indent=2)
 
-    print("Evaluation sweep complete.")
+    print(f"\nEvaluation sweep complete for {model_name}!")
     return results_summary
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SLMs at varying temperatures.")
     parser.add_argument("--model", type=str, default="Qwen/Qwen2.5-0.5B", help="Hugging Face model ID")
     parser.add_argument("--dataset", type=str, default="gsm8k", help="lm-eval task name (e.g., gsm8k, arc_easy)")
-    parser.add_argument("--limit", type=int, default=10, help="Number of samples to evaluate (for testing)")
+    parser.add_argument("--limit", type=int, default=0, help="Number of samples to evaluate (0 for full dataset)")
     parser.add_argument("--output_dir", type=str, default="data/results", help="Output directory")
+    parser.add_argument("--quantization", type=str, choices=["none", "4bit", "8bit"], default="none", help="Quantization level")
     args = parser.parse_args()
 
     print("Starting evaluation pipeline...")
     print(f"Model: {args.model}")
     print(f"Dataset: {args.dataset}")
-    print(f"Limit: {args.limit} samples per temperature")
+    print(f"Limit: {'Full Dataset' if args.limit <= 0 else args.limit}")
+    print(f"Quantization: {args.quantization}")
     print(f"Output dir: {args.output_dir}")
 
-    run_evaluation(args.model, args.dataset, args.limit, args.output_dir)
+    run_evaluation(args.model, args.dataset, args.limit, args.output_dir, args.quantization)
 
 if __name__ == "__main__":
     main()
