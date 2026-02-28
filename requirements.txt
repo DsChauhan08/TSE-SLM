@@ -1,0 +1,10 @@
+torch
+transformers
+accelerate
+datasets
+pandas
+matplotlib
+tqdm
+scipy
+scikit-learn
+jupyterlab
