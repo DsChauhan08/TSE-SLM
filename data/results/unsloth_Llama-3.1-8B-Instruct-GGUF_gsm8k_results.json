@@ -1,0 +1,254 @@
+[
+  {
+    "temperature": 0.0,
+    "accuracy": 0.0,
+    "time_seconds": 451.6377754211426,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.1,
+      "exact_match_stderr,flexible-extract": 0.09999999999999999
+    }
+  },
+  {
+    "temperature": 0.1,
+    "accuracy": 0.0,
+    "time_seconds": 416.7187156677246,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.1,
+      "exact_match_stderr,flexible-extract": 0.09999999999999999
+    }
+  },
+  {
+    "temperature": 0.2,
+    "accuracy": 0.0,
+    "time_seconds": 1171.7939202785492,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 0.3,
+    "accuracy": 0.0,
+    "time_seconds": 313.7223279476166,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 0.4,
+    "accuracy": 0.0,
+    "time_seconds": 305.80832409858704,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.1,
+      "exact_match_stderr,flexible-extract": 0.09999999999999999
+    }
+  },
+  {
+    "temperature": 0.5,
+    "accuracy": 0.0,
+    "time_seconds": 305.0636167526245,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.2,
+      "exact_match_stderr,flexible-extract": 0.13333333333333333
+    }
+  },
+  {
+    "temperature": 0.6,
+    "accuracy": 0.0,
+    "time_seconds": 306.3057017326355,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.1,
+      "exact_match_stderr,flexible-extract": 0.09999999999999999
+    }
+  },
+  {
+    "temperature": 0.7,
+    "accuracy": 0.0,
+    "time_seconds": 306.4358034133911,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 0.8,
+    "accuracy": 0.0,
+    "time_seconds": 304.8921465873718,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 0.9,
+    "accuracy": 0.0,
+    "time_seconds": 306.1110773086548,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.2,
+      "exact_match_stderr,flexible-extract": 0.13333333333333333
+    }
+  },
+  {
+    "temperature": 1.0,
+    "accuracy": 0.0,
+    "time_seconds": 324.3407464027405,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.1,
+    "accuracy": 0.0,
+    "time_seconds": 825.3529698848724,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.2,
+    "accuracy": 0.0,
+    "time_seconds": 1026.105001449585,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.3,
+    "accuracy": 0.0,
+    "time_seconds": 817.590390920639,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.4,
+    "accuracy": 0.0,
+    "time_seconds": 779.5244512557983,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.5,
+    "accuracy": 0.0,
+    "time_seconds": 821.4363613128662,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.6,
+    "accuracy": 0.0,
+    "time_seconds": 780.5144670009613,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.7,
+    "accuracy": 0.0,
+    "time_seconds": 859.8175158500671,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.1,
+      "exact_match_stderr,flexible-extract": 0.09999999999999999
+    }
+  },
+  {
+    "temperature": 1.8,
+    "accuracy": 0.0,
+    "time_seconds": 874.1108012199402,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 1.9,
+    "accuracy": 0.0,
+    "time_seconds": 837.9284174442291,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  },
+  {
+    "temperature": 2.0,
+    "accuracy": 0.0,
+    "time_seconds": 907.3208277225494,
+    "raw_results": {
+      "alias": "gsm8k",
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.0,
+      "exact_match_stderr,flexible-extract": 0.0
+    }
+  }
+]

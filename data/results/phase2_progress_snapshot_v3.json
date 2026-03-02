@@ -1,0 +1,22 @@
+{
+  "captured_at_epoch": 1772371938.0272105,
+  "log_path": "/home/regulus/Research/slm-temperature-study/logs/phase2_run_v3.log",
+  "log_tail": "=== Local Experiment Queue Runner ===\nRequested models: ['unsloth/llama-3-8b-bnb-4bit', 'TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF', 'unsloth/Phi-4-mini-reasoning-GGUF', 'unsloth/gemma-3-4b-it-unsloth-bnb-4bit']\nResolved models: ['unsloth/Llama-3.1-8B-Instruct-GGUF', 'TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF', 'unsloth/Phi-4-mini-reasoning-GGUF', 'unsloth/gemma-3-4b-it-GGUF']\n[Model Map] unsloth/llama-3-8b-bnb-4bit -> unsloth/Llama-3.1-8B-Instruct-GGUF (No NVIDIA GPU detected; using CPU-compatible 4-bit GGUF fallback: unsloth/Llama-3.1-8B-Instruct-GGUF)\n[Model Map] unsloth/gemma-3-4b-it-unsloth-bnb-4bit -> unsloth/gemma-3-4b-it-GGUF (No NVIDIA GPU detected; using CPU-compatible 4-bit GGUF fallback: unsloth/gemma-3-4b-it-GGUF)\nDataset: gsm8k\nLimit: 10\nTemperatures: 0.0..2.0 step 0.1\nStartup timeout: 180s\nPrefetch enabled: True\n\n[Prefetch] Starting initial prefetch for unsloth/Llama-3.1-8B-Instruct-GGUF\n\nFetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]",
+  "process": {
+    "pid": 564991,
+    "exists": true,
+    "State": "S (sleeping)",
+    "VmRSS": "222192 kB",
+    "Threads": "27",
+    "Name": "python",
+    "io_delta": {
+      "rchar": 0,
+      "wchar": 63643,
+      "syscr": 0,
+      "syscw": 340,
+      "read_bytes": 0,
+      "write_bytes": 65536,
+      "cancelled_write_bytes": 0
+    }
+  }
+}

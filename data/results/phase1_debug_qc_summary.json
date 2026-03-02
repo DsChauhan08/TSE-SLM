@@ -1,0 +1,27 @@
+{
+  "phase": "phase1-debug-pilot",
+  "models_tested": [
+    "TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF"
+  ],
+  "run_statuses": [
+    {
+      "model": "TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "status": "success",
+      "return_code": 0
+    }
+  ],
+  "result_file": "data/results/TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF_gsm8k_results.json",
+  "records": 1,
+  "error_records": 0,
+  "strict_match_values": [
+    0.0
+  ],
+  "flexible_extract_values": [
+    0.0
+  ],
+  "notes": [
+    "Debug pilot used limit=1 and temperature set {0.0}.",
+    "Queue orchestration and GGUF evaluation path executed end-to-end.",
+    "Next run should extend to full temperature grid and remaining selected models."
+  ]
+}

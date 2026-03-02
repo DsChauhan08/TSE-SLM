@@ -8,3 +8,8 @@ tqdm
 scipy
 scikit-learn
 jupyterlab
+lm-eval
+huggingface_hub
+requests
+llama-cpp-python
+bitsandbytes

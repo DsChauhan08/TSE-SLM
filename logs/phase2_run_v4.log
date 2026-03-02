@@ -1,0 +1,1223 @@
+=== Local Experiment Queue Runner ===
+Requested models: ['unsloth/llama-3-8b-bnb-4bit', 'TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF', 'unsloth/Phi-4-mini-reasoning-GGUF', 'unsloth/gemma-3-4b-it-unsloth-bnb-4bit']
+Resolved models: ['unsloth/Llama-3.1-8B-Instruct-GGUF', 'TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF', 'unsloth/Phi-4-mini-reasoning-GGUF', 'unsloth/gemma-3-4b-it-GGUF']
+[Model Map] unsloth/llama-3-8b-bnb-4bit -> unsloth/Llama-3.1-8B-Instruct-GGUF (No NVIDIA GPU detected; using CPU-compatible 4-bit GGUF fallback: unsloth/Llama-3.1-8B-Instruct-GGUF)
+[Model Map] unsloth/gemma-3-4b-it-unsloth-bnb-4bit -> unsloth/gemma-3-4b-it-GGUF (No NVIDIA GPU detected; using CPU-compatible 4-bit GGUF fallback: unsloth/gemma-3-4b-it-GGUF)
+Dataset: gsm8k
+Limit: 10
+Temperatures: 0.0..2.0 step 0.1
+Startup timeout: 180s
+n_threads: 4
+n_gpu_layers: -1
+Prefetch enabled: True
+
+[Prefetch] Starting initial prefetch for unsloth/Llama-3.1-8B-Instruct-GGUF
+Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]Fetching 1 files: 100%|██████████| 1/1 [00:00<00:00, 191.08it/s]
+[Prefetch] Ready for unsloth/Llama-3.1-8B-Instruct-GGUF: Prefetched GGUF: Llama-3.1-8B-Instruct-Q4_K_M.gguf
+[Prefetch] Starting background prefetch for next model: TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF
+
+[Run] Evaluating unsloth/Llama-3.1-8B-Instruct-GGUF
+[Run] Command: /home/regulus/Research/slm-temperature-study/venv/bin/python -u /home/regulus/Research/slm-temperature-study/scripts/evaluate_gguf_local.py --model unsloth/Llama-3.1-8B-Instruct-GGUF --dataset gsm8k --limit 10 --output_dir data/results --startup_timeout 180 --n_threads 4 --n_gpu_layers -1
+Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]Fetching 1 files: 100%|██████████| 1/1 [00:00<00:00, 775.14it/s]
+Starting LOCAL CPU evaluation pipeline...
+
+======================================
+Starting pipeline for unsloth/Llama-3.1-8B-Instruct-GGUF
+======================================
+Loaded existing results from data/results/unsloth_Llama-3.1-8B-Instruct-GGUF_gsm8k_results.json (records=21).
+All requested temperatures already completed; skipping evaluation run.
+[Run] Finished unsloth/Llama-3.1-8B-Instruct-GGUF with status=success in 3.21s
+[Prefetch] Ready for TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF: Prefetched GGUF: Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf
+[Prefetch] Starting background prefetch for next model: unsloth/Phi-4-mini-reasoning-GGUF
+
+[Run] Evaluating TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF
+[Run] Command: /home/regulus/Research/slm-temperature-study/venv/bin/python -u /home/regulus/Research/slm-temperature-study/scripts/evaluate_gguf_local.py --model TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF --dataset gsm8k --limit 10 --output_dir data/results --startup_timeout 180 --n_threads 4 --n_gpu_layers -1
+Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]Fetching 1 files: 100%|██████████| 1/1 [00:00<00:00, 1148.81it/s]
+Starting LOCAL CPU evaluation pipeline...
+
+======================================
+Starting pipeline for TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF
+======================================
+Loaded existing results from data/results/TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF_gsm8k_results.json (records=7).
+Looking for a 4-bit GGUF file in TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF...
+Found: Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf
+Downloading Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf (this may take a while)...
+Downloaded to Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf
+Warning: GPU offload requested but current llama.cpp build has no GPU-offload support; continuing on CPU.
+Starting llama_cpp server: /home/regulus/Research/slm-temperature-study/venv/bin/python -m llama_cpp.server --model Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf --n_ctx 4096 --port 8000 --host 127.0.0.1 --n_threads 4
+Server is up and running!
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=0.7 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 243.63it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:19<11:56, 79.64s/it]
+ 20%|██        | 2/10 [02:31<10:01, 75.17s/it]
+ 30%|███       | 3/10 [03:41<08:30, 72.94s/it]
+ 40%|████      | 4/10 [04:48<07:02, 70.46s/it]
+ 50%|█████     | 5/10 [06:08<06:09, 74.00s/it]
+ 60%|██████    | 6/10 [07:17<04:48, 72.08s/it]
+ 70%|███████   | 7/10 [08:22<03:29, 69.82s/it]
+ 80%|████████  | 8/10 [09:33<02:20, 70.14s/it]
+ 90%|█████████ | 9/10 [10:49<01:12, 72.12s/it]
+100%|██████████| 10/10 [11:59<00:00, 71.32s/it]
+100%|██████████| 10/10 [11:59<00:00, 71.92s/it]
+Result for T=0.7: 0.0 (Time: 776.94s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=0.8 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 235.56it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:11<10:40, 71.21s/it]
+ 20%|██        | 2/10 [02:14<08:53, 66.65s/it]
+ 30%|███       | 3/10 [03:23<07:52, 67.46s/it]
+ 40%|████      | 4/10 [04:26<06:35, 65.89s/it]
+ 50%|█████     | 5/10 [05:42<05:47, 69.55s/it]
+ 60%|██████    | 6/10 [06:49<04:34, 68.72s/it]
+ 70%|███████   | 7/10 [07:52<03:20, 66.80s/it]
+ 80%|████████  | 8/10 [09:03<02:16, 68.02s/it]
+ 90%|█████████ | 9/10 [10:18<01:10, 70.39s/it]
+100%|██████████| 10/10 [11:26<00:00, 69.70s/it]
+100%|██████████| 10/10 [11:26<00:00, 68.70s/it]
+Result for T=0.8: 0.0 (Time: 717.03s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=0.9 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 250.19it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:07<10:11, 67.97s/it]
+ 20%|██        | 2/10 [02:08<08:26, 63.31s/it]
+ 30%|███       | 3/10 [03:13<07:31, 64.44s/it]
+ 40%|████      | 4/10 [04:19<06:29, 64.89s/it]
+ 50%|█████     | 5/10 [05:39<05:52, 70.44s/it]
+ 60%|██████    | 6/10 [06:45<04:35, 68.79s/it]
+ 70%|███████   | 7/10 [07:48<03:20, 66.98s/it]
+ 80%|████████  | 8/10 [08:58<02:16, 68.00s/it]
+ 90%|█████████ | 9/10 [10:17<01:11, 71.34s/it]
+100%|██████████| 10/10 [11:26<00:00, 70.79s/it]
+100%|██████████| 10/10 [11:26<00:00, 68.69s/it]
+Result for T=0.9: 0.0 (Time: 718.61s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 233.27it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:06<09:57, 66.36s/it]
+ 20%|██        | 2/10 [02:09<08:33, 64.20s/it]
+ 30%|███       | 3/10 [03:18<07:46, 66.62s/it]
+ 40%|████      | 4/10 [04:23<06:36, 66.14s/it]
+ 50%|█████     | 5/10 [05:42<05:53, 70.63s/it]
+ 60%|██████    | 6/10 [06:47<04:35, 68.86s/it]
+ 70%|███████   | 7/10 [07:51<03:21, 67.17s/it]
+ 80%|████████  | 8/10 [08:59<02:14, 67.28s/it]
+ 90%|█████████ | 9/10 [10:15<01:10, 70.09s/it]
+100%|██████████| 10/10 [11:24<00:00, 69.70s/it]
+100%|██████████| 10/10 [11:24<00:00, 68.43s/it]
+Result for T=1.0: 0.0 (Time: 713.70s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.1 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 225.00it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:08<10:19, 68.85s/it]
+ 20%|██        | 2/10 [02:12<08:43, 65.50s/it]
+ 30%|███       | 3/10 [03:16<07:35, 65.14s/it]
+ 40%|████      | 4/10 [04:22<06:31, 65.31s/it]
+ 50%|█████     | 5/10 [05:39<05:48, 69.69s/it]
+ 60%|██████    | 6/10 [06:48<04:37, 69.30s/it]
+ 70%|███████   | 7/10 [07:51<03:22, 67.35s/it]
+ 80%|████████  | 8/10 [08:55<02:12, 66.17s/it]
+ 90%|█████████ | 9/10 [10:03<01:06, 66.84s/it]
+100%|██████████| 10/10 [11:07<00:00, 65.88s/it]
+100%|██████████| 10/10 [11:07<00:00, 66.73s/it]
+Result for T=1.1: 0.0 (Time: 696.09s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.2 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1211.42it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:01<09:17, 61.98s/it]
+ 20%|██        | 2/10 [02:01<08:05, 60.74s/it]
+ 30%|███       | 3/10 [03:04<07:11, 61.69s/it]
+ 40%|████      | 4/10 [04:03<06:03, 60.50s/it]
+ 50%|█████     | 5/10 [05:10<05:14, 62.93s/it]
+ 60%|██████    | 6/10 [06:14<04:13, 63.35s/it]
+ 70%|███████   | 7/10 [07:14<03:06, 62.17s/it]
+ 80%|████████  | 8/10 [08:17<02:04, 62.45s/it]
+ 90%|█████████ | 9/10 [09:25<01:04, 64.33s/it]
+100%|██████████| 10/10 [10:28<00:00, 63.82s/it]
+100%|██████████| 10/10 [10:28<00:00, 62.87s/it]
+Result for T=1.2: 0.0 (Time: 643.54s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.3 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 216.09it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:01<09:14, 61.65s/it]
+ 20%|██        | 2/10 [02:00<08:02, 60.26s/it]
+ 30%|███       | 3/10 [03:02<07:06, 61.00s/it]
+ 40%|████      | 4/10 [04:00<05:59, 59.86s/it]
+ 50%|█████     | 5/10 [05:09<05:14, 62.90s/it]
+ 60%|██████    | 6/10 [06:11<04:11, 62.75s/it]
+ 70%|███████   | 7/10 [07:10<03:04, 61.51s/it]
+ 80%|████████  | 8/10 [08:12<02:03, 61.77s/it]
+ 90%|█████████ | 9/10 [09:19<01:03, 63.31s/it]
+100%|██████████| 10/10 [10:20<00:00, 62.61s/it]
+100%|██████████| 10/10 [10:20<00:00, 62.07s/it]
+Result for T=1.3: 0.0 (Time: 636.31s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.4 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1291.31it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:01<09:12, 61.42s/it]
+ 20%|██        | 2/10 [02:01<08:03, 60.50s/it]
+ 30%|███       | 3/10 [02:59<06:56, 59.48s/it]
+ 40%|████      | 4/10 [03:59<05:58, 59.77s/it]
+ 50%|█████     | 5/10 [05:08<05:15, 63.02s/it]
+ 60%|██████    | 6/10 [06:11<04:11, 62.90s/it]
+ 70%|███████   | 7/10 [07:11<03:06, 62.09s/it]
+ 80%|████████  | 8/10 [08:16<02:06, 63.04s/it]
+ 90%|█████████ | 9/10 [09:25<01:04, 64.88s/it]
+100%|██████████| 10/10 [10:25<00:00, 63.20s/it]
+100%|██████████| 10/10 [10:25<00:00, 62.51s/it]
+Result for T=1.4: 0.0 (Time: 639.29s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.5 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 805.56it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:02<09:24, 62.68s/it]
+ 20%|██        | 2/10 [02:02<08:10, 61.27s/it]
+ 30%|███       | 3/10 [03:05<07:13, 61.94s/it]
+ 40%|████      | 4/10 [04:05<06:06, 61.04s/it]
+ 50%|█████     | 5/10 [05:14<05:18, 63.80s/it]
+ 60%|██████    | 6/10 [06:09<04:03, 60.94s/it]
+ 70%|███████   | 7/10 [07:05<02:58, 59.44s/it]
+ 80%|████████  | 8/10 [08:03<01:57, 58.81s/it]
+ 90%|█████████ | 9/10 [09:06<01:00, 60.18s/it]
+100%|██████████| 10/10 [10:02<00:00, 58.92s/it]
+100%|██████████| 10/10 [10:02<00:00, 60.25s/it]
+Result for T=1.5: 0.0 (Time: 617.47s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.6 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1545.20it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:57<08:40, 57.84s/it]
+ 20%|██        | 2/10 [01:51<07:25, 55.65s/it]
+ 30%|███       | 3/10 [02:48<06:32, 56.08s/it]
+ 40%|████      | 4/10 [03:43<05:34, 55.79s/it]
+ 50%|█████     | 5/10 [04:46<04:50, 58.16s/it]
+ 60%|██████    | 6/10 [05:42<03:49, 57.40s/it]
+ 70%|███████   | 7/10 [06:36<02:49, 56.37s/it]
+ 80%|████████  | 8/10 [07:34<01:53, 56.80s/it]
+ 90%|█████████ | 9/10 [08:36<00:58, 58.49s/it]
+100%|██████████| 10/10 [09:31<00:00, 57.58s/it]
+100%|██████████| 10/10 [09:31<00:00, 57.19s/it]
+Result for T=1.6: 0.0 (Time: 591.34s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.7 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1602.53it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:56<08:24, 56.03s/it]
+ 20%|██        | 2/10 [01:49<07:15, 54.45s/it]
+ 30%|███       | 3/10 [02:45<06:25, 55.13s/it]
+ 40%|████      | 4/10 [03:39<05:29, 54.90s/it]
+ 50%|█████     | 5/10 [04:43<04:50, 58.18s/it]
+ 60%|██████    | 6/10 [05:38<03:48, 57.05s/it]
+ 70%|███████   | 7/10 [06:34<02:50, 56.69s/it]
+ 80%|████████  | 8/10 [07:33<01:54, 57.23s/it]
+ 90%|█████████ | 9/10 [08:35<00:58, 59.00s/it]
+100%|██████████| 10/10 [09:32<00:00, 58.22s/it]
+100%|██████████| 10/10 [09:32<00:00, 57.24s/it]
+Result for T=1.7: 0.0 (Time: 589.97s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.8 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 222.17it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:58<08:50, 58.97s/it]
+ 20%|██        | 2/10 [01:53<07:32, 56.53s/it]
+ 30%|███       | 3/10 [02:49<06:33, 56.26s/it]
+ 40%|████      | 4/10 [03:43<05:32, 55.38s/it]
+ 50%|█████     | 5/10 [04:49<04:56, 59.23s/it]
+ 60%|██████    | 6/10 [05:45<03:51, 57.90s/it]
+ 70%|███████   | 7/10 [06:39<02:50, 56.81s/it]
+ 80%|████████  | 8/10 [07:36<01:53, 56.96s/it]
+ 90%|█████████ | 9/10 [08:40<00:59, 59.13s/it]
+100%|██████████| 10/10 [09:36<00:00, 58.09s/it]
+100%|██████████| 10/10 [09:36<00:00, 57.67s/it]
+Result for T=1.8: 0.0 (Time: 594.65s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=1.9 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1516.65it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:55<08:21, 55.73s/it]
+ 20%|██        | 2/10 [01:53<07:33, 56.69s/it]
+ 30%|███       | 3/10 [02:48<06:34, 56.29s/it]
+ 40%|████      | 4/10 [03:42<05:31, 55.18s/it]
+ 50%|█████     | 5/10 [04:46<04:51, 58.36s/it]
+ 60%|██████    | 6/10 [05:43<03:51, 57.85s/it]
+ 70%|███████   | 7/10 [06:40<02:52, 57.60s/it]
+ 80%|████████  | 8/10 [07:38<01:55, 57.67s/it]
+ 90%|█████████ | 9/10 [08:40<00:59, 59.14s/it]
+100%|██████████| 10/10 [09:36<00:00, 58.25s/it]
+100%|██████████| 10/10 [09:36<00:00, 57.68s/it]
+Result for T=1.9: 0.0 (Time: 595.95s)
+
+--- Evaluating Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf at T=2.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 432.63it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:56<08:28, 56.49s/it]
+ 20%|██        | 2/10 [01:51<07:26, 55.82s/it]
+ 30%|███       | 3/10 [02:48<06:32, 56.05s/it]
+ 40%|████      | 4/10 [03:45<05:38, 56.37s/it]
+ 50%|█████     | 5/10 [04:47<04:52, 58.50s/it]
+ 60%|██████    | 6/10 [05:41<03:47, 57.00s/it]
+ 70%|███████   | 7/10 [06:35<02:48, 56.16s/it]
+ 80%|████████  | 8/10 [07:33<01:53, 56.58s/it]
+ 90%|█████████ | 9/10 [08:42<01:00, 60.57s/it]
+100%|██████████| 10/10 [09:43<00:00, 60.77s/it]
+100%|██████████| 10/10 [09:43<00:00, 58.39s/it]
+Result for T=2.0: 0.0 (Time: 603.55s)
+
+Evaluation sweep complete for TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF!
+Shutting down server...
+Deleting model file Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf to free space...
+Deleted successfully.
+[Run] Finished TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF with status=success in 9165.27s
+[Prefetch] Ready for unsloth/Phi-4-mini-reasoning-GGUF: Prefetched GGUF: Phi-4-mini-reasoning-Q4_K_M.gguf
+[Prefetch] Starting background prefetch for next model: unsloth/gemma-3-4b-it-GGUF
+
+[Run] Evaluating unsloth/Phi-4-mini-reasoning-GGUF
+[Run] Command: /home/regulus/Research/slm-temperature-study/venv/bin/python -u /home/regulus/Research/slm-temperature-study/scripts/evaluate_gguf_local.py --model unsloth/Phi-4-mini-reasoning-GGUF --dataset gsm8k --limit 10 --output_dir data/results --startup_timeout 180 --n_threads 4 --n_gpu_layers -1
+Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]Starting LOCAL CPU evaluation pipeline...
+
+======================================
+Starting pipeline for unsloth/Phi-4-mini-reasoning-GGUF
+======================================
+Looking for a 4-bit GGUF file in unsloth/Phi-4-mini-reasoning-GGUF...
+Found: Phi-4-mini-reasoning-Q4_K_M.gguf
+Downloading Phi-4-mini-reasoning-Q4_K_M.gguf (this may take a while)...
+Downloaded to Phi-4-mini-reasoning-Q4_K_M.gguf
+Warning: GPU offload requested but current llama.cpp build has no GPU-offload support; continuing on CPU.
+Starting llama_cpp server: /home/regulus/Research/slm-temperature-study/venv/bin/python -m llama_cpp.server --model Phi-4-mini-reasoning-Q4_K_M.gguf --n_ctx 4096 --port 8000 --host 127.0.0.1 --n_threads 4
+Server is up and running!
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 929.53it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:59<08:57, 59.72s/it]
+ 20%|██        | 2/10 [01:55<07:41, 57.68s/it]
+ 30%|███       | 3/10 [02:42<06:09, 52.77s/it]
+ 40%|████      | 4/10 [03:24<04:51, 48.51s/it]
+ 50%|█████     | 5/10 [04:13<04:03, 48.71s/it]
+ 60%|██████    | 6/10 [04:55<03:05, 46.28s/it]
+ 70%|███████   | 7/10 [05:50<02:26, 48.98s/it]
+ 80%|████████  | 8/10 [06:41<01:39, 49.75s/it]
+Fetching 1 files: 100%|██████████| 1/1 [08:41<00:00, 521.18s/it]Fetching 1 files: 100%|██████████| 1/1 [08:41<00:00, 521.18s/it]
+ 90%|█████████ | 9/10 [07:44<00:53, 53.87s/it]
+100%|██████████| 10/10 [08:38<00:00, 53.93s/it]
+100%|██████████| 10/10 [08:38<00:00, 51.84s/it]
+Result for T=0.0: 0.0 (Time: 552.27s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.1 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1382.84it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:55<08:16, 55.17s/it]
+ 20%|██        | 2/10 [01:46<07:02, 52.77s/it]
+ 30%|███       | 3/10 [02:31<05:44, 49.20s/it]
+ 40%|████      | 4/10 [03:11<04:34, 45.82s/it]
+ 50%|█████     | 5/10 [03:57<03:48, 45.77s/it]
+ 60%|██████    | 6/10 [04:36<02:54, 43.57s/it]
+ 70%|███████   | 7/10 [05:27<02:17, 45.84s/it]
+ 80%|████████  | 8/10 [06:15<01:33, 46.68s/it]
+ 90%|█████████ | 9/10 [07:18<00:51, 51.68s/it]
+100%|██████████| 10/10 [08:09<00:00, 51.36s/it]
+100%|██████████| 10/10 [08:09<00:00, 48.91s/it]
+Result for T=0.1: 0.0 (Time: 503.30s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.2 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1468.85it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:51<07:40, 51.19s/it]
+ 20%|██        | 2/10 [01:40<06:39, 49.89s/it]
+ 30%|███       | 3/10 [02:18<05:13, 44.78s/it]
+ 40%|████      | 4/10 [02:57<04:14, 42.50s/it]
+ 50%|█████     | 5/10 [03:36<03:25, 41.09s/it]
+ 60%|██████    | 6/10 [04:11<02:36, 39.12s/it]
+ 70%|███████   | 7/10 [05:01<02:07, 42.56s/it]
+ 80%|████████  | 8/10 [05:44<01:25, 42.84s/it]
+ 90%|█████████ | 9/10 [06:41<00:47, 47.14s/it]
+100%|██████████| 10/10 [07:31<00:00, 48.01s/it]
+100%|██████████| 10/10 [07:31<00:00, 45.14s/it]
+Result for T=0.2: 0.0 (Time: 468.90s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.3 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1528.15it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:50<07:37, 50.87s/it]
+ 20%|██        | 2/10 [01:38<06:32, 49.11s/it]
+ 30%|███       | 3/10 [02:27<05:42, 48.89s/it]
+ 40%|████      | 4/10 [02:59<04:14, 42.38s/it]
+ 50%|█████     | 5/10 [03:41<03:30, 42.01s/it]
+ 60%|██████    | 6/10 [04:17<02:40, 40.03s/it]
+ 70%|███████   | 7/10 [05:06<02:08, 42.95s/it]
+ 80%|████████  | 8/10 [05:49<01:26, 43.16s/it]
+ 90%|█████████ | 9/10 [06:45<00:46, 46.94s/it]
+100%|██████████| 10/10 [07:36<00:00, 48.45s/it]
+100%|██████████| 10/10 [07:36<00:00, 45.70s/it]
+Result for T=0.3: 0.0 (Time: 474.77s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.4 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 264.90it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:48, 52.04s/it]
+ 20%|██        | 2/10 [01:40<06:41, 50.15s/it]
+ 30%|███       | 3/10 [02:21<05:20, 45.76s/it]
+ 40%|████      | 4/10 [02:52<04:00, 40.02s/it]
+ 50%|█████     | 5/10 [03:33<03:22, 40.45s/it]
+ 60%|██████    | 6/10 [04:08<02:33, 38.38s/it]
+ 70%|███████   | 7/10 [04:56<02:04, 41.56s/it]
+ 80%|████████  | 8/10 [05:35<01:21, 40.91s/it]
+ 90%|█████████ | 9/10 [06:33<00:46, 46.04s/it]
+100%|██████████| 10/10 [07:22<00:00, 47.16s/it]
+100%|██████████| 10/10 [07:22<00:00, 44.28s/it]
+Result for T=0.4: 0.0 (Time: 462.27s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.5 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1667.05it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:51<07:42, 51.34s/it]
+ 20%|██        | 2/10 [01:38<06:30, 48.82s/it]
+ 30%|███       | 3/10 [02:16<05:08, 44.02s/it]
+ 40%|████      | 4/10 [02:48<03:54, 39.05s/it]
+ 50%|█████     | 5/10 [03:28<03:16, 39.35s/it]
+ 60%|██████    | 6/10 [04:02<02:30, 37.60s/it]
+ 70%|███████   | 7/10 [04:52<02:05, 41.83s/it]
+ 80%|████████  | 8/10 [05:46<01:31, 45.52s/it]
+ 90%|█████████ | 9/10 [06:44<00:49, 49.48s/it]
+100%|██████████| 10/10 [07:34<00:00, 49.70s/it]
+100%|██████████| 10/10 [07:34<00:00, 45.46s/it]
+Result for T=0.5: 0.0 (Time: 473.99s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.6 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 533.46it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:53<07:58, 53.13s/it]
+ 20%|██        | 2/10 [01:42<06:48, 51.01s/it]
+ 30%|███       | 3/10 [02:33<05:55, 50.73s/it]
+ 40%|████      | 4/10 [03:04<04:18, 43.04s/it]
+ 50%|█████     | 5/10 [03:43<03:28, 41.73s/it]
+ 60%|██████    | 6/10 [04:17<02:36, 39.09s/it]
+ 70%|███████   | 7/10 [05:06<02:06, 42.25s/it]
+ 80%|████████  | 8/10 [05:56<01:29, 44.79s/it]
+ 90%|█████████ | 9/10 [06:52<00:48, 48.23s/it]
+100%|██████████| 10/10 [07:43<00:00, 49.21s/it]
+100%|██████████| 10/10 [07:43<00:00, 46.39s/it]
+Result for T=0.6: 0.0 (Time: 481.01s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.7 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 311.99it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:53, 52.59s/it]
+ 20%|██        | 2/10 [01:40<06:40, 50.11s/it]
+ 30%|███       | 3/10 [02:17<05:07, 43.99s/it]
+ 40%|████      | 4/10 [02:54<04:07, 41.26s/it]
+ 50%|█████     | 5/10 [03:34<03:22, 40.58s/it]
+ 60%|██████    | 6/10 [04:09<02:35, 38.88s/it]
+ 70%|███████   | 7/10 [04:58<02:06, 42.15s/it]
+ 80%|████████  | 8/10 [05:42<01:25, 42.84s/it]
+ 90%|█████████ | 9/10 [06:41<00:47, 47.83s/it]
+100%|██████████| 10/10 [07:26<00:00, 47.01s/it]
+100%|██████████| 10/10 [07:26<00:00, 44.69s/it]
+Result for T=0.7: 0.0 (Time: 465.47s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.8 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 171.93it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:49, 52.17s/it]
+ 20%|██        | 2/10 [01:39<06:36, 49.52s/it]
+ 30%|███       | 3/10 [02:18<05:12, 44.67s/it]
+ 40%|████      | 4/10 [02:56<04:12, 42.02s/it]
+ 50%|█████     | 5/10 [03:37<03:28, 41.73s/it]
+ 60%|██████    | 6/10 [04:13<02:39, 39.81s/it]
+ 70%|███████   | 7/10 [05:03<02:09, 43.14s/it]
+ 80%|████████  | 8/10 [05:56<01:32, 46.04s/it]
+ 90%|█████████ | 9/10 [06:53<00:49, 49.68s/it]
+100%|██████████| 10/10 [07:44<00:00, 49.84s/it]
+100%|██████████| 10/10 [07:44<00:00, 46.41s/it]
+Result for T=0.8: 0.0 (Time: 481.92s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=0.9 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 249.52it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:51, 52.44s/it]
+ 20%|██        | 2/10 [01:41<06:44, 50.55s/it]
+ 30%|███       | 3/10 [02:32<05:54, 50.63s/it]
+ 40%|████      | 4/10 [03:15<04:45, 47.59s/it]
+ 50%|█████     | 5/10 [03:55<03:44, 44.94s/it]
+ 60%|██████    | 6/10 [04:28<02:43, 40.81s/it]
+ 70%|███████   | 7/10 [05:16<02:09, 43.10s/it]
+ 80%|████████  | 8/10 [06:00<01:26, 43.44s/it]
+ 90%|█████████ | 9/10 [06:57<00:47, 47.81s/it]
+100%|██████████| 10/10 [07:49<00:00, 48.96s/it]
+100%|██████████| 10/10 [07:49<00:00, 46.93s/it]
+Result for T=0.9: 0.0 (Time: 487.18s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 403.34it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:51<07:43, 51.45s/it]
+ 20%|██        | 2/10 [01:38<06:32, 49.05s/it]
+ 30%|███       | 3/10 [02:17<05:11, 44.54s/it]
+ 40%|████      | 4/10 [02:48<03:53, 38.96s/it]
+ 50%|█████     | 5/10 [03:28<03:16, 39.35s/it]
+ 60%|██████    | 6/10 [04:04<02:32, 38.18s/it]
+ 70%|███████   | 7/10 [04:53<02:05, 41.69s/it]
+ 80%|████████  | 8/10 [05:36<01:24, 42.20s/it]
+ 90%|█████████ | 9/10 [06:33<00:46, 46.90s/it]
+100%|██████████| 10/10 [07:23<00:00, 47.87s/it]
+100%|██████████| 10/10 [07:23<00:00, 44.38s/it]
+Result for T=1.0: 0.0 (Time: 461.91s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.1 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1613.50it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:51<07:46, 51.83s/it]
+ 20%|██        | 2/10 [01:42<06:51, 51.43s/it]
+ 30%|███       | 3/10 [02:34<05:59, 51.37s/it]
+ 40%|████      | 4/10 [03:09<04:29, 44.90s/it]
+ 50%|█████     | 5/10 [03:55<03:46, 45.21s/it]
+ 60%|██████    | 6/10 [04:50<03:15, 48.84s/it]
+ 70%|███████   | 7/10 [05:45<02:32, 50.71s/it]
+ 80%|████████  | 8/10 [06:42<01:45, 52.69s/it]
+ 90%|█████████ | 9/10 [07:43<00:55, 55.44s/it]
+100%|██████████| 10/10 [08:36<00:00, 54.59s/it]
+100%|██████████| 10/10 [08:36<00:00, 51.66s/it]
+Result for T=1.1: 0.0 (Time: 534.94s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.2 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 234.52it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:56<08:24, 56.09s/it]
+ 20%|██        | 2/10 [01:45<06:57, 52.23s/it]
+ 30%|███       | 3/10 [02:38<06:07, 52.48s/it]
+ 40%|████      | 4/10 [03:08<04:22, 43.79s/it]
+ 50%|█████     | 5/10 [03:50<03:34, 42.97s/it]
+ 60%|██████    | 6/10 [04:22<02:37, 39.35s/it]
+ 70%|███████   | 7/10 [05:11<02:07, 42.59s/it]
+ 80%|████████  | 8/10 [05:55<01:25, 42.94s/it]
+ 90%|█████████ | 9/10 [06:54<00:47, 47.77s/it]
+100%|██████████| 10/10 [07:47<00:00, 49.49s/it]
+100%|██████████| 10/10 [07:47<00:00, 46.74s/it]
+Result for T=1.2: 0.0 (Time: 481.65s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.3 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 287.44it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:44<06:36, 44.11s/it]
+ 20%|██        | 2/10 [01:31<06:09, 46.24s/it]
+ 30%|███       | 3/10 [02:20<05:31, 47.38s/it]
+ 40%|████      | 4/10 [02:52<04:06, 41.14s/it]
+ 50%|█████     | 5/10 [03:34<03:28, 41.60s/it]
+ 60%|██████    | 6/10 [04:10<02:38, 39.54s/it]
+ 70%|███████   | 7/10 [04:58<02:06, 42.28s/it]
+ 80%|████████  | 8/10 [05:41<01:25, 42.53s/it]
+ 90%|█████████ | 9/10 [06:39<00:47, 47.34s/it]
+100%|██████████| 10/10 [07:29<00:00, 48.34s/it]
+100%|██████████| 10/10 [07:29<00:00, 44.96s/it]
+Result for T=1.3: 0.0 (Time: 467.03s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.4 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 524.55it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:51<07:40, 51.22s/it]
+ 20%|██        | 2/10 [01:38<06:33, 49.16s/it]
+ 30%|███       | 3/10 [02:27<05:43, 49.08s/it]
+ 40%|████      | 4/10 [02:59<04:13, 42.24s/it]
+ 50%|█████     | 5/10 [03:39<03:26, 41.36s/it]
+ 60%|██████    | 6/10 [04:16<02:39, 39.89s/it]
+ 70%|███████   | 7/10 [05:07<02:10, 43.43s/it]
+ 80%|████████  | 8/10 [05:43<01:22, 41.14s/it]
+ 90%|█████████ | 9/10 [06:34<00:44, 44.36s/it]
+100%|██████████| 10/10 [07:26<00:00, 46.54s/it]
+100%|██████████| 10/10 [07:26<00:00, 44.63s/it]
+Result for T=1.4: 0.0 (Time: 466.44s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.5 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 517.82it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:49, 52.11s/it]
+ 20%|██        | 2/10 [01:40<06:38, 49.81s/it]
+ 30%|███       | 3/10 [02:29<05:47, 49.60s/it]
+ 40%|████      | 4/10 [03:07<04:30, 45.08s/it]
+ 50%|█████     | 5/10 [04:06<04:09, 49.96s/it]
+ 60%|██████    | 6/10 [04:57<03:21, 50.31s/it]
+ 70%|███████   | 7/10 [05:38<02:22, 47.34s/it]
+ 80%|████████  | 8/10 [06:22<01:32, 46.30s/it]
+ 90%|█████████ | 9/10 [07:19<00:49, 49.52s/it]
+100%|██████████| 10/10 [08:09<00:00, 49.84s/it]
+100%|██████████| 10/10 [08:09<00:00, 48.99s/it]
+Result for T=1.5: 0.0 (Time: 514.62s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.6 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1443.97it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:53<08:02, 53.66s/it]
+ 20%|██        | 2/10 [01:40<06:39, 49.93s/it]
+ 30%|███       | 3/10 [02:20<05:14, 44.99s/it]
+ 40%|████      | 4/10 [02:52<03:59, 39.94s/it]
+ 50%|█████     | 5/10 [03:32<03:20, 40.05s/it]
+ 60%|██████    | 6/10 [04:05<02:30, 37.64s/it]
+ 70%|███████   | 7/10 [04:56<02:05, 41.98s/it]
+ 80%|████████  | 8/10 [05:39<01:24, 42.45s/it]
+ 90%|█████████ | 9/10 [06:37<00:47, 47.23s/it]
+100%|██████████| 10/10 [07:30<00:00, 49.01s/it]
+100%|██████████| 10/10 [07:30<00:00, 45.06s/it]
+Result for T=1.6: 0.0 (Time: 469.30s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.7 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 284.67it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:54<08:09, 54.39s/it]
+ 20%|██        | 2/10 [01:45<07:01, 52.74s/it]
+ 30%|███       | 3/10 [02:23<05:19, 45.71s/it]
+ 40%|████      | 4/10 [02:54<03:59, 39.84s/it]
+ 50%|█████     | 5/10 [03:41<03:31, 42.39s/it]
+ 60%|██████    | 6/10 [04:15<02:38, 39.51s/it]
+ 70%|███████   | 7/10 [05:03<02:07, 42.51s/it]
+ 80%|████████  | 8/10 [05:40<01:21, 40.58s/it]
+ 90%|█████████ | 9/10 [06:36<00:45, 45.60s/it]
+100%|██████████| 10/10 [07:24<00:00, 46.41s/it]
+100%|██████████| 10/10 [07:24<00:00, 44.50s/it]
+Result for T=1.7: 0.0 (Time: 464.07s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.8 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 317.05it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:50, 52.29s/it]
+ 20%|██        | 2/10 [01:39<06:34, 49.33s/it]
+ 30%|███       | 3/10 [02:28<05:45, 49.36s/it]
+ 40%|████      | 4/10 [02:59<04:12, 42.01s/it]
+ 50%|█████     | 5/10 [03:43<03:33, 42.62s/it]
+ 60%|██████    | 6/10 [04:16<02:37, 39.38s/it]
+ 70%|███████   | 7/10 [05:05<02:07, 42.40s/it]
+ 80%|████████  | 8/10 [05:58<01:31, 46.00s/it]
+ 90%|█████████ | 9/10 [06:56<00:49, 49.71s/it]
+100%|██████████| 10/10 [07:48<00:00, 50.29s/it]
+100%|██████████| 10/10 [07:48<00:00, 46.82s/it]
+Result for T=1.8: 0.0 (Time: 485.41s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=1.9 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 449.39it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:51<07:39, 51.04s/it]
+ 20%|██        | 2/10 [01:39<06:38, 49.76s/it]
+ 30%|███       | 3/10 [02:28<05:45, 49.41s/it]
+ 40%|████      | 4/10 [02:58<04:10, 41.75s/it]
+ 50%|█████     | 5/10 [03:40<03:29, 41.85s/it]
+ 60%|██████    | 6/10 [04:15<02:37, 39.34s/it]
+ 70%|███████   | 7/10 [05:04<02:08, 42.69s/it]
+ 80%|████████  | 8/10 [05:48<01:25, 42.89s/it]
+ 90%|█████████ | 9/10 [06:46<00:47, 47.80s/it]
+100%|██████████| 10/10 [07:37<00:00, 48.69s/it]
+100%|██████████| 10/10 [07:37<00:00, 45.76s/it]
+Result for T=1.9: 0.0 (Time: 477.78s)
+
+--- Evaluating Phi-4-mini-reasoning-Q4_K_M.gguf at T=2.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 612.42it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:50<07:38, 50.99s/it]
+ 20%|██        | 2/10 [01:38<06:30, 48.76s/it]
+ 30%|███       | 3/10 [02:19<05:18, 45.52s/it]
+ 40%|████      | 4/10 [03:10<04:45, 47.56s/it]
+ 50%|█████     | 5/10 [03:49<03:42, 44.53s/it]
+ 60%|██████    | 6/10 [04:23<02:43, 41.00s/it]
+ 70%|███████   | 7/10 [05:13<02:11, 43.70s/it]
+ 80%|████████  | 8/10 [05:57<01:28, 44.04s/it]
+ 90%|█████████ | 9/10 [06:37<00:42, 42.80s/it]
+100%|██████████| 10/10 [07:27<00:00, 44.87s/it]
+100%|██████████| 10/10 [07:27<00:00, 44.75s/it]
+Result for T=2.0: 0.0 (Time: 466.45s)
+
+Evaluation sweep complete for unsloth/Phi-4-mini-reasoning-GGUF!
+Shutting down server...
+Deleting model file Phi-4-mini-reasoning-Q4_K_M.gguf to free space...
+Deleted successfully.
+[Run] Finished unsloth/Phi-4-mini-reasoning-GGUF with status=success in 10173.13s
+[Prefetch] Ready for unsloth/gemma-3-4b-it-GGUF: Prefetched GGUF: gemma-3-4b-it-Q4_K_M.gguf
+
+[Run] Evaluating unsloth/gemma-3-4b-it-GGUF
+[Run] Command: /home/regulus/Research/slm-temperature-study/venv/bin/python -u /home/regulus/Research/slm-temperature-study/scripts/evaluate_gguf_local.py --model unsloth/gemma-3-4b-it-GGUF --dataset gsm8k --limit 10 --output_dir data/results --startup_timeout 180 --n_threads 4 --n_gpu_layers -1
+Starting LOCAL CPU evaluation pipeline...
+
+======================================
+Starting pipeline for unsloth/gemma-3-4b-it-GGUF
+======================================
+Looking for a 4-bit GGUF file in unsloth/gemma-3-4b-it-GGUF...
+Found: gemma-3-4b-it-Q4_K_M.gguf
+Downloading gemma-3-4b-it-Q4_K_M.gguf (this may take a while)...
+Downloaded to gemma-3-4b-it-Q4_K_M.gguf
+Warning: GPU offload requested but current llama.cpp build has no GPU-offload support; continuing on CPU.
+Starting llama_cpp server: /home/regulus/Research/slm-temperature-study/venv/bin/python -m llama_cpp.server --model gemma-3-4b-it-Q4_K_M.gguf --n_ctx 4096 --port 8000 --host 127.0.0.1 --n_threads 4
+Server is up and running!
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 586.25it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:02<09:22, 62.45s/it]
+ 20%|██        | 2/10 [01:57<07:45, 58.14s/it]
+ 30%|███       | 3/10 [02:57<06:52, 58.90s/it]
+ 40%|████      | 4/10 [03:52<05:43, 57.24s/it]
+ 50%|█████     | 5/10 [04:59<05:04, 60.81s/it]
+ 60%|██████    | 6/10 [05:56<03:58, 59.71s/it]
+ 70%|███████   | 7/10 [06:52<02:55, 58.38s/it]
+ 80%|████████  | 8/10 [07:53<01:58, 59.34s/it]
+ 90%|█████████ | 9/10 [08:59<01:01, 61.43s/it]
+100%|██████████| 10/10 [09:59<00:00, 60.86s/it]
+100%|██████████| 10/10 [09:59<00:00, 59.94s/it]
+Result for T=0.0: 0.0 (Time: 642.75s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.1 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 260.06it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:58<08:50, 58.97s/it]
+ 20%|██        | 2/10 [01:55<07:38, 57.32s/it]
+ 30%|███       | 3/10 [02:54<06:48, 58.31s/it]
+ 40%|████      | 4/10 [03:50<05:44, 57.35s/it]
+ 50%|█████     | 5/10 [04:56<05:01, 60.39s/it]
+ 60%|██████    | 6/10 [05:50<03:53, 58.44s/it]
+ 70%|███████   | 7/10 [06:46<02:52, 57.63s/it]
+ 80%|████████  | 8/10 [07:45<01:55, 57.79s/it]
+ 90%|█████████ | 9/10 [08:51<01:00, 60.38s/it]
+100%|██████████| 10/10 [09:51<00:00, 60.46s/it]
+100%|██████████| 10/10 [09:51<00:00, 59.18s/it]
+Result for T=0.1: 0.0 (Time: 615.77s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.2 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1493.01it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:00<09:03, 60.39s/it]
+ 20%|██        | 2/10 [01:55<07:36, 57.01s/it]
+ 30%|███       | 3/10 [02:52<06:41, 57.39s/it]
+ 40%|████      | 4/10 [03:45<05:33, 55.50s/it]
+ 50%|█████     | 5/10 [04:50<04:55, 59.10s/it]
+ 60%|██████    | 6/10 [05:47<03:52, 58.21s/it]
+ 70%|███████   | 7/10 [06:44<02:53, 57.85s/it]
+ 80%|████████  | 8/10 [07:44<01:56, 58.39s/it]
+ 90%|█████████ | 9/10 [08:50<01:00, 60.75s/it]
+100%|██████████| 10/10 [09:48<00:00, 60.09s/it]
+100%|██████████| 10/10 [09:48<00:00, 58.86s/it]
+Result for T=0.2: 0.0 (Time: 612.72s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.3 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 252.50it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:59<08:56, 59.58s/it]
+ 20%|██        | 2/10 [01:55<07:39, 57.43s/it]
+ 30%|███       | 3/10 [02:53<06:42, 57.56s/it]
+ 40%|████      | 4/10 [03:48<05:39, 56.65s/it]
+ 50%|█████     | 5/10 [04:54<04:59, 59.96s/it]
+ 60%|██████    | 6/10 [05:50<03:54, 58.71s/it]
+ 70%|███████   | 7/10 [06:48<02:55, 58.59s/it]
+ 80%|████████  | 8/10 [07:48<01:57, 58.86s/it]
+ 90%|█████████ | 9/10 [08:53<01:00, 60.93s/it]
+100%|██████████| 10/10 [09:52<00:00, 60.24s/it]
+100%|██████████| 10/10 [09:52<00:00, 59.25s/it]
+Result for T=0.3: 0.0 (Time: 618.01s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.4 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 247.25it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:00<09:01, 60.13s/it]
+ 20%|██        | 2/10 [01:55<07:40, 57.61s/it]
+ 30%|███       | 3/10 [02:53<06:44, 57.76s/it]
+ 40%|████      | 4/10 [03:47<05:37, 56.23s/it]
+ 50%|█████     | 5/10 [04:53<04:58, 59.65s/it]
+ 60%|██████    | 6/10 [05:50<03:55, 58.85s/it]
+ 70%|███████   | 7/10 [06:47<02:54, 58.14s/it]
+ 80%|████████  | 8/10 [07:45<01:56, 58.08s/it]
+ 90%|█████████ | 9/10 [08:50<01:00, 60.28s/it]
+100%|██████████| 10/10 [09:49<00:00, 59.83s/it]
+100%|██████████| 10/10 [09:49<00:00, 58.94s/it]
+Result for T=0.4: 0.0 (Time: 612.24s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.5 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 366.30it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:55<08:19, 55.49s/it]
+ 20%|██        | 2/10 [01:48<07:13, 54.23s/it]
+ 30%|███       | 3/10 [02:46<06:31, 55.89s/it]
+ 40%|████      | 4/10 [03:41<05:33, 55.56s/it]
+ 50%|█████     | 5/10 [04:47<04:56, 59.21s/it]
+ 60%|██████    | 6/10 [05:44<03:53, 58.44s/it]
+ 70%|███████   | 7/10 [06:40<02:53, 57.74s/it]
+ 80%|████████  | 8/10 [07:39<01:55, 57.94s/it]
+ 90%|█████████ | 9/10 [08:43<00:59, 59.89s/it]
+100%|██████████| 10/10 [09:42<00:00, 59.56s/it]
+100%|██████████| 10/10 [09:42<00:00, 58.21s/it]
+Result for T=0.5: 0.0 (Time: 605.85s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.6 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 234.45it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:58<08:47, 58.65s/it]
+ 20%|██        | 2/10 [01:53<07:31, 56.48s/it]
+ 30%|███       | 3/10 [02:52<06:43, 57.66s/it]
+ 40%|████      | 4/10 [03:47<05:38, 56.41s/it]
+ 50%|█████     | 5/10 [04:52<04:58, 59.73s/it]
+ 60%|██████    | 6/10 [05:49<03:55, 58.87s/it]
+ 70%|███████   | 7/10 [06:45<02:53, 57.91s/it]
+ 80%|████████  | 8/10 [07:45<01:57, 58.52s/it]
+ 90%|█████████ | 9/10 [08:50<01:00, 60.47s/it]
+100%|██████████| 10/10 [09:47<00:00, 59.49s/it]
+100%|██████████| 10/10 [09:47<00:00, 58.78s/it]
+Result for T=0.6: 0.0 (Time: 612.46s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.7 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 374.61it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:57<08:40, 57.82s/it]
+ 20%|██        | 2/10 [01:52<07:26, 55.84s/it]
+ 30%|███       | 3/10 [02:49<06:34, 56.36s/it]
+ 40%|████      | 4/10 [03:43<05:34, 55.69s/it]
+ 50%|█████     | 5/10 [04:48<04:54, 58.97s/it]
+ 60%|██████    | 6/10 [05:47<03:56, 59.03s/it]
+ 70%|███████   | 7/10 [06:45<02:55, 58.58s/it]
+ 80%|████████  | 8/10 [07:45<01:57, 58.95s/it]
+ 90%|█████████ | 9/10 [08:50<01:00, 60.80s/it]
+100%|██████████| 10/10 [09:46<00:00, 59.46s/it]
+100%|██████████| 10/10 [09:46<00:00, 58.66s/it]
+Result for T=0.7: 0.0 (Time: 610.70s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.8 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 324.12it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:58<08:48, 58.76s/it]
+ 20%|██        | 2/10 [01:53<07:29, 56.19s/it]
+ 30%|███       | 3/10 [02:49<06:35, 56.47s/it]
+ 40%|████      | 4/10 [03:45<05:36, 56.16s/it]
+ 50%|█████     | 5/10 [04:52<04:59, 59.91s/it]
+ 60%|██████    | 6/10 [05:51<03:58, 59.65s/it]
+ 70%|███████   | 7/10 [06:47<02:55, 58.45s/it]
+ 80%|████████  | 8/10 [07:47<01:58, 59.09s/it]
+ 90%|█████████ | 9/10 [08:52<01:00, 61.00s/it]
+100%|██████████| 10/10 [09:52<00:00, 60.40s/it]
+100%|██████████| 10/10 [09:52<00:00, 59.20s/it]
+Result for T=0.8: 0.0 (Time: 616.86s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=0.9 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1347.22it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:57<08:40, 57.81s/it]
+ 20%|██        | 2/10 [01:54<07:39, 57.39s/it]
+ 30%|███       | 3/10 [02:53<06:45, 57.88s/it]
+ 40%|████      | 4/10 [03:49<05:42, 57.04s/it]
+ 50%|█████     | 5/10 [04:54<05:00, 60.02s/it]
+ 60%|██████    | 6/10 [05:52<03:57, 59.46s/it]
+ 70%|███████   | 7/10 [06:51<02:57, 59.09s/it]
+ 80%|████████  | 8/10 [07:50<01:58, 59.12s/it]
+ 90%|█████████ | 9/10 [08:56<01:01, 61.30s/it]
+100%|██████████| 10/10 [09:55<00:00, 60.72s/it]
+100%|██████████| 10/10 [09:55<00:00, 59.58s/it]
+Result for T=0.9: 0.0 (Time: 619.20s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1536.88it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:59<08:59, 59.91s/it]
+ 20%|██        | 2/10 [01:54<07:32, 56.61s/it]
+ 30%|███       | 3/10 [02:52<06:40, 57.20s/it]
+ 40%|████      | 4/10 [03:47<05:38, 56.41s/it]
+ 50%|█████     | 5/10 [04:53<05:00, 60.06s/it]
+ 60%|██████    | 6/10 [05:50<03:55, 58.92s/it]
+ 70%|███████   | 7/10 [06:47<02:54, 58.23s/it]
+ 80%|████████  | 8/10 [07:45<01:56, 58.28s/it]
+ 90%|█████████ | 9/10 [08:50<01:00, 60.23s/it]
+100%|██████████| 10/10 [09:48<00:00, 59.72s/it]
+100%|██████████| 10/10 [09:48<00:00, 58.89s/it]
+Result for T=1.0: 0.0 (Time: 615.25s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.1 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 183.52it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:59<08:54, 59.38s/it]
+ 20%|██        | 2/10 [01:55<07:37, 57.22s/it]
+ 30%|███       | 3/10 [02:54<06:47, 58.22s/it]
+ 40%|████      | 4/10 [03:49<05:42, 57.11s/it]
+ 50%|█████     | 5/10 [04:56<05:01, 60.36s/it]
+ 60%|██████    | 6/10 [05:54<03:59, 59.80s/it]
+ 70%|███████   | 7/10 [06:51<02:55, 58.64s/it]
+ 80%|████████  | 8/10 [07:49<01:57, 58.68s/it]
+ 90%|█████████ | 9/10 [09:10<01:05, 65.67s/it]
+100%|██████████| 10/10 [10:16<00:00, 65.76s/it]
+100%|██████████| 10/10 [10:16<00:00, 61.68s/it]
+Result for T=1.1: 0.0 (Time: 646.37s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.2 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1364.67it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:53<08:05, 53.99s/it]
+ 20%|██        | 2/10 [02:00<08:09, 61.23s/it]
+ 30%|███       | 3/10 [03:05<07:20, 62.92s/it]
+ 40%|████      | 4/10 [03:53<05:42, 57.08s/it]
+ 50%|█████     | 5/10 [05:02<05:06, 61.38s/it]
+ 60%|██████    | 6/10 [06:03<04:04, 61.23s/it]
+ 70%|███████   | 7/10 [07:14<03:13, 64.65s/it]
+ 80%|████████  | 8/10 [08:29<02:15, 67.67s/it]
+ 90%|█████████ | 9/10 [09:51<01:12, 72.25s/it]
+100%|██████████| 10/10 [11:00<00:00, 71.13s/it]
+100%|██████████| 10/10 [11:00<00:00, 66.01s/it]
+Result for T=1.2: 0.0 (Time: 683.31s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.3 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 330.57it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:10<10:30, 70.09s/it]
+ 20%|██        | 2/10 [02:17<09:07, 68.42s/it]
+ 30%|███       | 3/10 [03:24<07:53, 67.68s/it]
+ 40%|████      | 4/10 [04:33<06:51, 68.50s/it]
+ 50%|█████     | 5/10 [05:44<05:46, 69.36s/it]
+ 60%|██████    | 6/10 [06:40<04:19, 64.80s/it]
+ 70%|███████   | 7/10 [07:29<02:58, 59.43s/it]
+ 80%|████████  | 8/10 [08:26<01:57, 58.78s/it]
+ 90%|█████████ | 9/10 [09:45<01:05, 65.12s/it]
+100%|██████████| 10/10 [10:54<00:00, 66.35s/it]
+100%|██████████| 10/10 [10:54<00:00, 65.47s/it]
+Result for T=1.3: 0.0 (Time: 677.46s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.4 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1270.81it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:57<08:40, 57.84s/it]
+ 20%|██        | 2/10 [01:53<07:31, 56.38s/it]
+ 30%|███       | 3/10 [02:49<06:35, 56.47s/it]
+ 40%|████      | 4/10 [03:49<05:47, 57.89s/it]
+ 50%|█████     | 5/10 [05:04<05:18, 63.77s/it]
+ 60%|██████    | 6/10 [06:08<04:16, 64.07s/it]
+ 70%|███████   | 7/10 [07:18<03:17, 65.80s/it]
+ 80%|████████  | 8/10 [08:27<02:14, 67.11s/it]
+ 90%|█████████ | 9/10 [09:57<01:14, 74.03s/it]
+100%|██████████| 10/10 [11:16<00:00, 75.68s/it]
+100%|██████████| 10/10 [11:16<00:00, 67.66s/it]
+Result for T=1.4: 0.0 (Time: 698.67s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.5 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 289.80it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:54<08:13, 54.86s/it]
+ 20%|██        | 2/10 [01:41<06:40, 50.01s/it]
+ 30%|███       | 3/10 [02:32<05:53, 50.49s/it]
+ 40%|████      | 4/10 [03:29<05:19, 53.21s/it]
+ 50%|█████     | 5/10 [04:39<04:55, 59.18s/it]
+ 60%|██████    | 6/10 [05:38<03:55, 58.92s/it]
+ 70%|███████   | 7/10 [06:32<02:52, 57.55s/it]
+ 80%|████████  | 8/10 [07:42<02:03, 61.57s/it]
+ 90%|█████████ | 9/10 [08:51<01:03, 63.80s/it]
+100%|██████████| 10/10 [09:57<00:00, 64.55s/it]
+100%|██████████| 10/10 [09:57<00:00, 59.79s/it]
+Result for T=1.5: 0.0 (Time: 625.20s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.6 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1308.63it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:54<08:09, 54.35s/it]
+ 20%|██        | 2/10 [01:42<06:47, 50.90s/it]
+ 30%|███       | 3/10 [02:35<06:00, 51.50s/it]
+ 40%|████      | 4/10 [03:22<04:58, 49.73s/it]
+ 50%|█████     | 5/10 [04:19<04:23, 52.67s/it]
+ 60%|██████    | 6/10 [05:27<03:50, 57.57s/it]
+ 70%|███████   | 7/10 [06:20<02:48, 56.27s/it]
+ 80%|████████  | 8/10 [07:29<02:00, 60.43s/it]
+ 90%|█████████ | 9/10 [08:33<01:01, 61.44s/it]
+100%|██████████| 10/10 [09:24<00:00, 58.22s/it]
+100%|██████████| 10/10 [09:24<00:00, 56.46s/it]
+Result for T=1.6: 0.0 (Time: 583.54s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.7 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1169.14it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:52<07:50, 52.29s/it]
+ 20%|██        | 2/10 [01:40<06:39, 49.91s/it]
+ 30%|███       | 3/10 [02:36<06:09, 52.77s/it]
+ 40%|████      | 4/10 [03:27<05:12, 52.06s/it]
+ 50%|█████     | 5/10 [04:38<04:53, 58.68s/it]
+ 60%|██████    | 6/10 [05:37<03:56, 59.07s/it]
+ 70%|███████   | 7/10 [06:32<02:52, 57.59s/it]
+ 80%|████████  | 8/10 [07:26<01:52, 56.45s/it]
+ 90%|█████████ | 9/10 [08:25<00:57, 57.22s/it]
+100%|██████████| 10/10 [09:27<00:00, 58.72s/it]
+100%|██████████| 10/10 [09:27<00:00, 56.75s/it]
+Result for T=1.7: 0.0 (Time: 588.73s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.8 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 505.30it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:59<08:55, 59.51s/it]
+ 20%|██        | 2/10 [01:53<07:29, 56.16s/it]
+ 30%|███       | 3/10 [03:03<07:18, 62.62s/it]
+ 40%|████      | 4/10 [04:04<06:10, 61.82s/it]
+ 50%|█████     | 5/10 [05:19<05:34, 66.82s/it]
+ 60%|██████    | 6/10 [06:15<04:11, 62.88s/it]
+ 70%|███████   | 7/10 [07:15<03:06, 62.03s/it]
+ 80%|████████  | 8/10 [08:17<02:03, 61.91s/it]
+ 90%|█████████ | 9/10 [09:26<01:04, 64.21s/it]
+100%|██████████| 10/10 [10:27<00:00, 63.37s/it]
+100%|██████████| 10/10 [10:27<00:00, 62.78s/it]
+Result for T=1.8: 0.0 (Time: 651.34s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=1.9 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 1394.01it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [00:59<08:51, 59.06s/it]
+ 20%|██        | 2/10 [01:48<07:05, 53.23s/it]
+ 30%|███       | 3/10 [02:37<05:58, 51.21s/it]
+ 40%|████      | 4/10 [03:24<04:59, 49.85s/it]
+ 50%|█████     | 5/10 [04:20<04:20, 52.10s/it]
+ 60%|██████    | 6/10 [05:08<03:22, 50.58s/it]
+ 70%|███████   | 7/10 [05:55<02:28, 49.43s/it]
+ 80%|████████  | 8/10 [06:47<01:40, 50.27s/it]
+ 90%|█████████ | 9/10 [07:45<00:52, 52.63s/it]
+100%|██████████| 10/10 [08:31<00:00, 50.73s/it]
+100%|██████████| 10/10 [08:31<00:00, 51.19s/it]
+Result for T=1.9: 0.0 (Time: 533.41s)
+
+--- Evaluating gemma-3-4b-it-Q4_K_M.gguf at T=2.0 ---
+Overwriting default num_fewshot of gsm8k from 5 to 0
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|██████████| 10/10 [00:00<00:00, 364.66it/s]
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+ 10%|█         | 1/10 [01:11<10:41, 71.25s/it]
+ 20%|██        | 2/10 [02:17<09:07, 68.49s/it]
+ 30%|███       | 3/10 [03:17<07:30, 64.30s/it]
+ 40%|████      | 4/10 [04:17<06:17, 62.94s/it]
+ 50%|█████     | 5/10 [05:23<05:19, 63.89s/it]
+ 60%|██████    | 6/10 [06:38<04:30, 67.58s/it]
+ 70%|███████   | 7/10 [07:45<03:21, 67.30s/it]
+ 80%|████████  | 8/10 [08:59<02:18, 69.46s/it]
+ 90%|█████████ | 9/10 [10:15<01:11, 71.75s/it]
+100%|██████████| 10/10 [11:26<00:00, 71.54s/it]
+100%|██████████| 10/10 [11:26<00:00, 68.70s/it]
+Result for T=2.0: 0.0 (Time: 707.03s)
+
+Evaluation sweep complete for unsloth/gemma-3-4b-it-GGUF!
+Shutting down server...
+Deleting model file gemma-3-4b-it-Q4_K_M.gguf to free space...
+Deleted successfully.
+[Run] Finished unsloth/gemma-3-4b-it-GGUF with status=success in 13226.66s
+
+Saved queue summary: /home/regulus/Research/slm-temperature-study/data/results/phase1_queue_summary.json
+Completed all model runs successfully.

@@ -1,0 +1,16 @@
+{
+  "captured_at_epoch": 1772393030.510148,
+  "model1_completed_records": 21,
+  "model1_avg_seconds_per_temp": 621.0729218891689,
+  "model2_completed_records": 6,
+  "model2_avg_seconds_per_temp": 1002.7980226278305,
+  "remaining_temperatures_total": 57,
+  "remaining_by_model": {
+    "model2": 15,
+    "model3": 21,
+    "model4": 21
+  },
+  "eta_hours_fast": 9.833654596578508,
+  "eta_hours_mid": 12.855644977426245,
+  "eta_hours_slow": 15.877635358273983
+}

@@ -1,0 +1,64 @@
+{
+  "captured_at_epoch": 1772370772.7845738,
+  "phase2_process": {
+    "pid": 518482,
+    "exists": true,
+    "status": {
+      "State": "S (sleeping)",
+      "VmRSS": "1421472 kB",
+      "Threads": "57",
+      "Name": "python"
+    },
+    "io_start": {
+      "rchar": 225371450,
+      "wchar": 5815969479,
+      "syscr": 41113,
+      "syscw": 158157,
+      "read_bytes": 322375680,
+      "write_bytes": 5810860032,
+      "cancelled_write_bytes": 0
+    },
+    "io_end": {
+      "rchar": 225371450,
+      "wchar": 5815969479,
+      "syscr": 41113,
+      "syscw": 158157,
+      "read_bytes": 322375680,
+      "write_bytes": 5810860032,
+      "cancelled_write_bytes": 0
+    },
+    "io_delta": {
+      "cancelled_write_bytes": 0,
+      "rchar": 0,
+      "read_bytes": 0,
+      "syscr": 0,
+      "syscw": 0,
+      "wchar": 0,
+      "write_bytes": 0
+    }
+  },
+  "cache": {
+    "unsloth/llama-3-8b-bnb-4bit": {
+      "cache_path": "/home/regulus/.cache/huggingface/hub/models--unsloth--llama-3-8b-bnb-4bit",
+      "exists": true,
+      "size_bytes": 11423844132
+    },
+    "TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": {
+      "cache_path": "/home/regulus/.cache/huggingface/hub/models--TeichAI--Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "exists": true,
+      "size_bytes": 72804770
+    },
+    "unsloth/Phi-4-mini-reasoning-GGUF": {
+      "cache_path": "/home/regulus/.cache/huggingface/hub/models--unsloth--Phi-4-mini-reasoning-GGUF",
+      "exists": false,
+      "size_bytes": 0
+    },
+    "unsloth/gemma-3-4b-it-unsloth-bnb-4bit": {
+      "cache_path": "/home/regulus/.cache/huggingface/hub/models--unsloth--gemma-3-4b-it-unsloth-bnb-4bit",
+      "exists": false,
+      "size_bytes": 0
+    }
+  },
+  "phase2_log_path": "/home/regulus/Research/slm-temperature-study/logs/phase2_run.log",
+  "phase2_log_tail": "Traceback (most recent call last):\n  File \"/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py\", line 158, in <module>\n    main()\n    ~~~~^^\n  File \"/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py\", line 155, in main\n    run_evaluation(args.model, args.dataset, args.limit, args.output_dir, args.quantization, temperatures)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py\", line 74, in run_evaluation\n    lm = HFLM(**fallback_kwargs)\n  File \"/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/lm_eval/models/huggingface.py\", line 224, in __init__\n    self._create_model(\n    ~~~~~~~~~~~~~~~~~~^\n        pretrained=pretrained,\n        ^^^^^^^^^^^^^^^^^^^^^^\n    ...<15 lines>...\n        **kwargs,\n        ^^^^^^^^^\n    )\n    ^\n  File \"/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/lm_eval/models/huggingface.py\", line 632, in _create_model\n    self._model = self.AUTO_MODEL_CLASS.from_pretrained(\n                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        pretrained,\n        ^^^^^^^^^^^\n    ...<6 lines>...\n        **model_kwargs,\n        ^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/models/auto/auto_factory.py\", line 374, in from_pretrained\n    return model_class.from_pretrained(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py\", line 4030, in from_pretrained\n    model = cls(config, *model_args, **model_kwargs)\nTypeError: LlamaForCausalLM.__init__() got an unexpected keyword argument 'model_kwargs'\n[Run] Finished unsloth/llama-3-8b-bnb-4bit with status=failed in 38.40s\n"
+}

@@ -26,20 +26,17 @@ except ImportError:
 def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: str, base_url: str):
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     
-    print("
-==========================================================")
+    print("\n==========================================================")
     print(f"Starting LM Studio pipeline for: {model_name}")
     print(f"Connecting to server at: {base_url}")
     print("Ensure your model is loaded and the LM Studio server is running!")
-    print("==========================================================
-")
+    print("==========================================================\n")
 
     temperatures = [round(i * 0.1, 1) for i in range(21)]
     results_summary = []
 
     for temp in temperatures:
-        print(f"
---- Evaluating {model_name} at T={temp} ---")
+        print(f"\n--- Evaluating {model_name} at T={temp} ---")
         
         do_sample = temp > 0.0
         hf_temp = temp if do_sample else 0.0 # OpenAI/LM Studio API usually accepts 0.0 for greedy
@@ -54,7 +51,11 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
             # Since lm-eval's API model doesn't always accept dynamic kwargs in simple_evaluate easily,
             # we inject them via the model_args string for the OpenAI API wrapper.
             # E.g. temperature=0.5,top_p=1.0
-            model_args += f",temperature={hf_temp},top_p=1.0"
+            model_args += f",temperature={hf_temp},top_p=1.0,tokenizer={model_name}"
+            
+            # Apply chat template since LM Studio wants conversational formats
+            apply_chat = True
+            # We use apply_chat_template via passing apply_chat_template=True to simple_evaluate
 
             results = lm_eval.simple_evaluate(
                 model="local-chat-completions",
@@ -62,6 +63,7 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
                 tasks=[dataset],
                 num_fewshot=0,
                 limit=max_samples if max_samples > 0 else None,
+                apply_chat_template=True,
             )
             
             elapsed = time.time() - start_time
@@ -92,22 +94,21 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
         results_summary.append(record)
         
         # Save incremental results
-        safe_model_name = model_name.replace('/', '_').replace('', '_')
+        safe_model_name = model_name.replace('/', '_').replace('\\', '_')
         out_file = Path(output_dir) / f"LM_Studio_{safe_model_name}_{dataset}_results.json"
         with open(out_file, "w") as f:
             json.dump(results_summary, f, indent=2)
             
-    print(f"
-Evaluation sweep complete for {model_name}!")
+    print(f"\nEvaluation sweep complete for {model_name}!")
     print(f"Results saved to: {out_file}")
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate a model loaded in LM Studio.")
     parser.add_argument("--model_name", type=str, required=True, help="A name to identify your run (e.g. qwen3-4b-q4)")
     parser.add_argument("--dataset", type=str, default="gsm8k", help="lm-eval task name (e.g., gsm8k, arc_easy)")
-    parser.add_argument("--limit", type=int, default=10, help="Number of samples to evaluate (0 for full dataset)")
+    parser.add_argument("--limit", type=int, default=0, help="Number of samples to evaluate (0 for full dataset)")
     parser.add_argument("--output_dir", type=str, default="data/results", help="Output directory")
-    parser.add_argument("--base_url", type=str, default="http://127.0.0.1:1234/v1", help="LM Studio API base URL")
+    parser.add_argument("--base_url", type=str, default="http://127.0.0.1:1234/v1/chat/completions", help="LM Studio API base URL")
     args = parser.parse_args()
 
     run_evaluation(args.model_name, args.dataset, args.limit, args.output_dir, args.base_url)

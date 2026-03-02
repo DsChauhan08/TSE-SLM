@@ -1,0 +1,42 @@
+[
+  {
+    "requested_model": "unsloth/llama-3-8b-bnb-4bit",
+    "model": "unsloth/Llama-3.1-8B-Instruct-GGUF",
+    "status": "success",
+    "return_code": 0,
+    "elapsed_seconds": 3.2134344577789307,
+    "log_file": "/home/regulus/Research/slm-temperature-study/logs/phase1/unsloth__Llama-3.1-8B-Instruct-GGUF.log",
+    "prefetch_message": "Prefetched GGUF: Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+    "prefetch_error": null
+  },
+  {
+    "requested_model": "TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+    "model": "TeichAI/Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+    "status": "success",
+    "return_code": 0,
+    "elapsed_seconds": 9165.268909692764,
+    "log_file": "/home/regulus/Research/slm-temperature-study/logs/phase1/TeichAI__Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF.log",
+    "prefetch_message": "Prefetched GGUF: Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill.q4_k_m.gguf",
+    "prefetch_error": null
+  },
+  {
+    "requested_model": "unsloth/Phi-4-mini-reasoning-GGUF",
+    "model": "unsloth/Phi-4-mini-reasoning-GGUF",
+    "status": "success",
+    "return_code": 0,
+    "elapsed_seconds": 10173.129264593124,
+    "log_file": "/home/regulus/Research/slm-temperature-study/logs/phase1/unsloth__Phi-4-mini-reasoning-GGUF.log",
+    "prefetch_message": "Prefetched GGUF: Phi-4-mini-reasoning-Q4_K_M.gguf",
+    "prefetch_error": null
+  },
+  {
+    "requested_model": "unsloth/gemma-3-4b-it-unsloth-bnb-4bit",
+    "model": "unsloth/gemma-3-4b-it-GGUF",
+    "status": "success",
+    "return_code": 0,
+    "elapsed_seconds": 13226.663816690445,
+    "log_file": "/home/regulus/Research/slm-temperature-study/logs/phase1/unsloth__gemma-3-4b-it-GGUF.log",
+    "prefetch_message": "Prefetched GGUF: gemma-3-4b-it-Q4_K_M.gguf",
+    "prefetch_error": null
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "temperature": 0.0,
+    "error": "Subprocess failed",
+    "time_seconds": 15.757827520370483
+  },
+  {
+    "temperature": 0.1,
+    "error": "Subprocess failed",
+    "time_seconds": 16.892740726470947
+  },
+  {
+    "temperature": 0.2,
+    "error": "Subprocess failed",
+    "time_seconds": 15.904382705688477
+  },
+  {
+    "temperature": 0.3,
+    "error": "Subprocess failed",
+    "time_seconds": 13.875248670578003
+  },
+  {
+    "temperature": 0.4,
+    "error": "Subprocess failed",
+    "time_seconds": 13.977980375289917
+  },
+  {
+    "temperature": 0.5,
+    "error": "Subprocess failed",
+    "time_seconds": 13.909111261367798
+  },
+  {
+    "temperature": 0.6,
+    "error": "Subprocess failed",
+    "time_seconds": 14.115981578826904
+  },
+  {
+    "temperature": 0.7,
+    "error": "Subprocess failed",
+    "time_seconds": 13.917367458343506
+  },
+  {
+    "temperature": 0.8,
+    "error": "Subprocess failed",
+    "time_seconds": 14.16994047164917
+  },
+  {
+    "temperature": 0.9,
+    "error": "Subprocess failed",
+    "time_seconds": 14.694775819778442
+  },
+  {
+    "temperature": 1.0,
+    "error": "Subprocess failed",
+    "time_seconds": 15.108025074005127
+  },
+  {
+    "temperature": 1.1,
+    "error": "Subprocess failed",
+    "time_seconds": 13.660840511322021
+  },
+  {
+    "temperature": 1.2,
+    "error": "Subprocess failed",
+    "time_seconds": 11.827335119247437
+  },
+  {
+    "temperature": 1.3,
+    "error": "Subprocess failed",
+    "time_seconds": 11.574063777923584
+  },
+  {
+    "temperature": 1.4,
+    "error": "Subprocess failed",
+    "time_seconds": 11.748772382736206
+  },
+  {
+    "temperature": 1.5,
+    "error": "Subprocess failed",
+    "time_seconds": 11.619666576385498
+  },
+  {
+    "temperature": 1.6,
+    "error": "Subprocess failed",
+    "time_seconds": 11.526473045349121
+  },
+  {
+    "temperature": 1.7,
+    "error": "Subprocess failed",
+    "time_seconds": 11.701602935791016
+  },
+  {
+    "temperature": 1.8,
+    "error": "Subprocess failed",
+    "time_seconds": 13.73085618019104
+  },
+  {
+    "temperature": 1.9,
+    "error": "Subprocess failed",
+    "time_seconds": 13.94118857383728
+  },
+  {
+    "temperature": 2.0,
+    "error": "Subprocess failed",
+    "time_seconds": 14.513235807418823
+  }
+]

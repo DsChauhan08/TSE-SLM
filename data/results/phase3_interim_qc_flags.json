@@ -1,0 +1,18 @@
+{
+  "phase": "phase3-interim",
+  "flag_count": 2,
+  "flags": [
+    {
+      "model_label": "LM_Studio_google_gemma-3-4b",
+      "severity": "warning",
+      "flag": "strict_flex_divergence",
+      "detail": "Strict-match remains zero while flexible-extract is high; likely extraction/scoring artifact and requires manual inspection."
+    },
+    {
+      "model_label": "unsloth_Llama-3.1-8B-Instruct-GGUF",
+      "severity": "info",
+      "flag": "partial_temperature_grid",
+      "detail": "Model has fewer than 21 temperature points; treat best-temperature estimate as provisional."
+    }
+  ]
+}

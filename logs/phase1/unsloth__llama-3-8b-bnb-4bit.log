@@ -1,0 +1,112 @@
+Starting evaluation pipeline...
+Model: unsloth/llama-3-8b-bnb-4bit
+Dataset: gsm8k
+Limit: 10
+Quantization: 4bit
+Output dir: data/results
+Loading model: unsloth/llama-3-8b-bnb-4bit with quantization: 4bit ...
+Detected pre-quantized 4-bit model repo; skipping explicit load_in_4bit flag.
+/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/quantizers/auto.py:250: UserWarning: You passed `quantization_config` or equivalent parameters to `from_pretrained` but the model you're loading already has a `quantization_config` attribute. The `quantization_config` from the model will be used.
+  warnings.warn(warning_msg)
+Failed to load model with initial kwargs, retrying with minimal kwargs. Error: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+Traceback (most recent call last):
+  File "/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py", line 65, in run_evaluation
+    lm = HFLM(**kwargs)
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/lm_eval/models/huggingface.py", line 224, in __init__
+    self._create_model(
+    ~~~~~~~~~~~~~~~~~~^
+        pretrained=pretrained,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/lm_eval/models/huggingface.py", line 632, in _create_model
+    self._model = self.AUTO_MODEL_CLASS.from_pretrained(
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained,
+        ^^^^^^^^^^^
+    ...<6 lines>...
+        **model_kwargs,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 374, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py", line 4072, in from_pretrained
+    loading_info, disk_offload_index = cls._load_pretrained_model(model, state_dict, checkpoint_files, load_config)
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py", line 4151, in _load_pretrained_model
+    caching_allocator_warmup(model, expanded_device_map, load_config.hf_quantizer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py", line 4724, in caching_allocator_warmup
+    index = device.index if device.index is not None else accelerator_module.current_device()
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/torch/cuda/__init__.py", line 1094, in current_device
+    _lazy_init()
+    ~~~~~~~~~~^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/torch/cuda/__init__.py", line 424, in _lazy_init
+    torch._C._cuda_init()
+    ~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py", line 159, in <module>
+    main()
+    ~~~~^^
+  File "/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py", line 156, in main
+    run_evaluation(args.model, args.dataset, args.limit, args.output_dir, args.quantization, temperatures)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/regulus/Research/slm-temperature-study/scripts/evaluate_temperature.py", line 75, in run_evaluation
+    lm = HFLM(**fallback_kwargs)
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/lm_eval/models/huggingface.py", line 224, in __init__
+    self._create_model(
+    ~~~~~~~~~~~~~~~~~~^
+        pretrained=pretrained,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/lm_eval/models/huggingface.py", line 632, in _create_model
+    self._model = self.AUTO_MODEL_CLASS.from_pretrained(
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained,
+        ^^^^^^^^^^^
+    ...<6 lines>...
+        **model_kwargs,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 374, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py", line 4072, in from_pretrained
+    loading_info, disk_offload_index = cls._load_pretrained_model(model, state_dict, checkpoint_files, load_config)
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py", line 4151, in _load_pretrained_model
+    caching_allocator_warmup(model, expanded_device_map, load_config.hf_quantizer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/transformers/modeling_utils.py", line 4724, in caching_allocator_warmup
+    index = device.index if device.index is not None else accelerator_module.current_device()
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/torch/cuda/__init__.py", line 1094, in current_device
+    _lazy_init()
+    ~~~~~~~~~~^^
+  File "/home/regulus/Research/slm-temperature-study/venv/lib64/python3.13/site-packages/torch/cuda/__init__.py", line 424, in _lazy_init
+    torch._C._cuda_init()
+    ~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx

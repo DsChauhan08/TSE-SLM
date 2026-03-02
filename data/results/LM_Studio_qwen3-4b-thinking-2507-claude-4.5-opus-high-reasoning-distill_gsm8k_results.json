@@ -1,0 +1,22 @@
+[
+  {
+    "temperature": 0.0,
+    "error": "LocalChatCompletion expects messages as list[dict]. If you see this error, ensure --apply_chat_template is set or upstream code formats messages correctly.",
+    "time_seconds": 18.653709888458252
+  },
+  {
+    "temperature": 0.1,
+    "error": "LocalChatCompletion expects messages as list[dict]. If you see this error, ensure --apply_chat_template is set or upstream code formats messages correctly.",
+    "time_seconds": 11.834547519683838
+  },
+  {
+    "temperature": 0.2,
+    "error": "LocalChatCompletion expects messages as list[dict]. If you see this error, ensure --apply_chat_template is set or upstream code formats messages correctly.",
+    "time_seconds": 9.064815521240234
+  },
+  {
+    "temperature": 0.3,
+    "error": "LocalChatCompletion expects messages as list[dict]. If you see this error, ensure --apply_chat_template is set or upstream code formats messages correctly.",
+    "time_seconds": 10.399093627929688
+  }
+]

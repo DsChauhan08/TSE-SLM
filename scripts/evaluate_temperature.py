@@ -14,15 +14,28 @@ import torch
 try:
     import lm_eval
     from lm_eval.models.huggingface import HFLM
-    from lm_eval import simple_evaluate
 except ImportError:
     print("Missing lm-eval. Please install it: pip install lm-eval")
     exit(1)
 
-def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: str, quantization: str):
+def parse_temperatures(raw_temperatures: str):
+    if not raw_temperatures:
+        return [round(i * 0.1, 1) for i in range(21)]
+
+    parsed = []
+    seen = set()
+    for chunk in raw_temperatures.split(","):
+        value = round(float(chunk.strip()), 1)
+        if value not in seen:
+            parsed.append(value)
+            seen.add(value)
+    if not parsed:
+        raise ValueError("No valid temperatures provided.")
+    return parsed
+
+def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: str, quantization: str, temperatures):
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-    temperatures = [round(i * 0.1, 1) for i in range(21)]
     results_summary = []
 
     print(f"Loading model: {model_name} with quantization: {quantization} ...")
@@ -30,11 +43,18 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
     # Setup kwargs for model initialization
     kwargs = {
         "pretrained": model_name,
-        "backend": "causal"
+        "backend": "causal",
+        "trust_remote_code": True,
     }
-    
+
+    model_name_lower = model_name.lower()
+    is_prequantized_4bit_repo = ("4bit" in model_name_lower) or ("bnb" in model_name_lower)
+
     if quantization == "4bit":
-        kwargs["load_in_4bit"] = True
+        if is_prequantized_4bit_repo:
+            print("Detected pre-quantized 4-bit model repo; skipping explicit load_in_4bit flag.")
+        else:
+            kwargs["load_in_4bit"] = True
     elif quantization == "8bit":
         kwargs["load_in_8bit"] = True
     else:
@@ -44,18 +64,13 @@ def run_evaluation(model_name: str, dataset: str, max_samples: int, output_dir: 
     try:
         lm = HFLM(**kwargs)
     except Exception as e:
-        print(f"Failed to load model using simple kwargs. Trying 'model_kwargs' dict. Error: {e}")
-        # Fallback for some lm_eval versions that expect model_kwargs
+        print(f"Failed to load model with initial kwargs, retrying with minimal kwargs. Error: {e}")
         fallback_kwargs = {
             "pretrained": model_name,
             "backend": "causal",
-            "model_kwargs": {}
+            "trust_remote_code": True,
         }
-        if quantization == "4bit":
-            fallback_kwargs["model_kwargs"]["load_in_4bit"] = True
-        elif quantization == "8bit":
-            fallback_kwargs["model_kwargs"]["load_in_8bit"] = True
-        else:
+        if quantization == "none":
             fallback_kwargs["device"] = "cuda" if torch.cuda.is_available() else "cpu"
         lm = HFLM(**fallback_kwargs)
 
@@ -127,7 +142,9 @@ def main():
     parser.add_argument("--limit", type=int, default=0, help="Number of samples to evaluate (0 for full dataset)")
     parser.add_argument("--output_dir", type=str, default="data/results", help="Output directory")
     parser.add_argument("--quantization", type=str, choices=["none", "4bit", "8bit"], default="none", help="Quantization level")
+    parser.add_argument("--temperatures", type=str, default="", help="Comma-separated temperature list (e.g. 0.0,0.7,1.4)")
     args = parser.parse_args()
+    temperatures = parse_temperatures(args.temperatures)
 
     print("Starting evaluation pipeline...")
     print(f"Model: {args.model}")
@@ -136,7 +153,7 @@ def main():
     print(f"Quantization: {args.quantization}")
     print(f"Output dir: {args.output_dir}")
 
-    run_evaluation(args.model, args.dataset, args.limit, args.output_dir, args.quantization)
+    run_evaluation(args.model, args.dataset, args.limit, args.output_dir, args.quantization, temperatures)
 
 if __name__ == "__main__":
     main()

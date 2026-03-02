@@ -1,0 +1,7 @@
+Starting LOCAL CPU evaluation pipeline...
+
+======================================
+Starting pipeline for unsloth/Llama-3.1-8B-Instruct-GGUF
+======================================
+Loaded existing results from data/results/unsloth_Llama-3.1-8B-Instruct-GGUF_gsm8k_results.json (records=21).
+All requested temperatures already completed; skipping evaluation run.

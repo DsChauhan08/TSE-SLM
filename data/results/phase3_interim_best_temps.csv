@@ -1,0 +1,4 @@
+model_label,records,temp_min,temp_max,best_metric,best_temperature,best_value,strict_mean,flex_mean,is_partial_grid
+LM_Studio_google_gemma-3-4b,21,0.0,2.0,"exact_match,flexible-extract",0.0,1.0,0.0,1.0,False
+Qwen_Qwen2.5-0.5B,21,0.0,2.0,"exact_match,flexible-extract",0.0,0.2,0.0,0.08571428571428572,False
+unsloth_Llama-3.1-8B-Instruct-GGUF,11,0.0,1.0,"exact_match,flexible-extract",0.5,0.2,0.0,0.07272727272727274,True

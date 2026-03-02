@@ -1,0 +1,24 @@
+{
+  "status": "ok_partial",
+  "file": "data/results/unsloth_Llama-3.1-8B-Instruct-GGUF_gsm8k_results.json",
+  "records": 3,
+  "unique_temperatures": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "last_temperature": 0.2,
+  "error_records": 0,
+  "missing_metrics_temperatures": [],
+  "strict_values": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "flex_values": [
+    0.1,
+    0.1,
+    0.0
+  ],
+  "complete_for_full_grid": false
+}

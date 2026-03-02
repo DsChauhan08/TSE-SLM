@@ -1,0 +1,53 @@
+{
+  "phase": "phase3-interim",
+  "selected_files": [
+    "data/results/LM_Studio_google_gemma-3-4b_gsm8k_results.json",
+    "data/results/Qwen_Qwen2.5-0.5B_gsm8k_results.json",
+    "data/results/unsloth_Llama-3.1-8B-Instruct-GGUF_gsm8k_results.json"
+  ],
+  "models": [
+    {
+      "file": "data/results/LM_Studio_google_gemma-3-4b_gsm8k_results.json",
+      "model_label": "LM_Studio_google_gemma-3-4b",
+      "records": 21,
+      "temperature_min": 0.0,
+      "temperature_max": 2.0,
+      "best_metric": "exact_match,flexible-extract",
+      "best_temperature": 0.0,
+      "best_value": 1.0,
+      "strict_mean": 0.0,
+      "flex_mean": 1.0,
+      "is_partial_grid": false
+    },
+    {
+      "file": "data/results/Qwen_Qwen2.5-0.5B_gsm8k_results.json",
+      "model_label": "Qwen_Qwen2.5-0.5B",
+      "records": 21,
+      "temperature_min": 0.0,
+      "temperature_max": 2.0,
+      "best_metric": "exact_match,flexible-extract",
+      "best_temperature": 0.0,
+      "best_value": 0.2,
+      "strict_mean": 0.0,
+      "flex_mean": 0.08571428571428572,
+      "is_partial_grid": false
+    },
+    {
+      "file": "data/results/unsloth_Llama-3.1-8B-Instruct-GGUF_gsm8k_results.json",
+      "model_label": "unsloth_Llama-3.1-8B-Instruct-GGUF",
+      "records": 11,
+      "temperature_min": 0.0,
+      "temperature_max": 1.0,
+      "best_metric": "exact_match,flexible-extract",
+      "best_temperature": 0.5,
+      "best_value": 0.2,
+      "strict_mean": 0.0,
+      "flex_mean": 0.07272727272727274,
+      "is_partial_grid": true
+    }
+  ],
+  "plots": {
+    "flexible_extract_overlay": "data/plots/phase3_interim_flexible_extract_overlay.png",
+    "strict_match_overlay": "data/plots/phase3_interim_strict_match_overlay.png"
+  }
+}
