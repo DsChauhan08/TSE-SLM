@@ -27,6 +27,9 @@ def patched_completion(self, context, continuation=None, stop=None, retries=3, d
                 "temperature": self.temperature,
                 "top_p": getattr(self, "top_p", 1.0)
             }
+            top_k = getattr(self, "top_k", 0)
+            if top_k and top_k > 0:
+                request["top_k"] = int(top_k)
             if continuation:
                 prompt += continuation
                 request.update({"prompt": prompt, "max_tokens": 1, "echo": True})
@@ -99,10 +102,16 @@ def run_evaluation(
     startup_timeout: int,
     n_threads: int,
     n_gpu_layers: int,
+    top_p: float,
+    top_k: int,
+    run_tag: str,
+    seed: int,
 ):
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     safe_repo_name = repo_id.replace('/', '_')
-    out_file = Path(output_dir) / f"{safe_repo_name}_{dataset}_results.json"
+    safe_run_tag = "".join(ch if ch.isalnum() or ch in ("-", "_") else "_" for ch in run_tag).strip("_")
+    tag_suffix = f"_{safe_run_tag}" if safe_run_tag else ""
+    out_file = Path(output_dir) / f"{safe_repo_name}_{dataset}{tag_suffix}_results.json"
     
     print("\n======================================")
     print(f"Starting pipeline for {repo_id}")
@@ -163,6 +172,8 @@ def run_evaluation(
             server_cmd.extend(["--n_gpu_layers", str(n_gpu_layers)])
         else:
             print("Warning: GPU offload requested but current llama.cpp build has no GPU-offload support; continuing on CPU.")
+    if seed >= 0:
+        server_cmd.extend(["--seed", str(seed)])
     
     print(f"Starting llama_cpp server: {' '.join(server_cmd)}")
     server_process = subprocess.Popen(
@@ -180,7 +191,9 @@ def run_evaluation(
     print("Server is up and running!")
     
     lm = GGUFLM(base_url=f"http://127.0.0.1:{port}")
-    lm.top_p = 1.0
+    lm.top_p = top_p
+    if top_k > 0:
+        lm.top_k = top_k
 
     for temp in temperatures_to_run:
         print(f"\n--- Evaluating {filename} at T={temp} ---")
@@ -254,6 +267,10 @@ def main():
     parser.add_argument("--startup_timeout", type=int, default=300, help="llama.cpp server startup timeout in seconds")
     parser.add_argument("--n_threads", type=int, default=0, help="llama.cpp server CPU threads (0 = default)")
     parser.add_argument("--n_gpu_layers", type=int, default=0, help="llama.cpp GPU layers (-1 = all layers, 0 = CPU/default)")
+    parser.add_argument("--top_p", type=float, default=1.0, help="Sampling top_p value")
+    parser.add_argument("--top_k", type=int, default=0, help="Sampling top_k value (0 = disabled)")
+    parser.add_argument("--run_tag", type=str, default="", help="Optional suffix tag for output filename")
+    parser.add_argument("--seed", type=int, default=-1, help="Server seed (-1 = default/random)")
     args = parser.parse_args()
 
     default_models = [
@@ -277,6 +294,10 @@ def main():
             args.startup_timeout,
             args.n_threads,
             args.n_gpu_layers,
+            args.top_p,
+            args.top_k,
+            args.run_tag,
+            args.seed,
         )
         if not ok:
             had_failures = True

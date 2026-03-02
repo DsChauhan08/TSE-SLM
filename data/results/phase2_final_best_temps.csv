@@ -1,0 +1,5 @@
+model_label,records,error_records,complete,best_metric,best_temperature,best_value,flex_mean,strict_mean,time_mean_seconds
+unsloth_Llama-3.1-8B-Instruct-GGUF,21,0,True,"exact_match,flexible-extract",0.5,0.2,0.04285714285714286,0.0,621.0729218891689
+TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF,21,0,True,"exact_match,flexible-extract",1.2,0.2,0.08095238095238096,0.0,765.031180938085
+unsloth_Phi-4-mini-reasoning-GGUF,21,0,True,"exact_match,flexible-extract",0.3,0.1,0.03333333333333334,0.0,482.8900679520198
+unsloth_gemma-3-4b-it-GGUF,21,0,True,"exact_match,flexible-extract",1.5,0.2,0.03333333333333334,0.0,627.4699155830201

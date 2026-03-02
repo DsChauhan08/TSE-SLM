@@ -1,0 +1,26 @@
+[
+  {
+    "temperature": 0.0,
+    "accuracy": 0.1,
+    "time_seconds": 3130.6405482292175,
+    "raw_results": {
+      "alias": "arc_easy",
+      "acc,none": 0.1,
+      "acc_stderr,none": 0.09999999999999999,
+      "acc_norm,none": 0.0,
+      "acc_norm_stderr,none": 0.0
+    }
+  },
+  {
+    "temperature": 0.1,
+    "accuracy": 0.1,
+    "time_seconds": 2956.944471359253,
+    "raw_results": {
+      "alias": "arc_easy",
+      "acc,none": 0.1,
+      "acc_stderr,none": 0.09999999999999999,
+      "acc_norm,none": 0.0,
+      "acc_norm_stderr,none": 0.0
+    }
+  }
+]

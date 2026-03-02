@@ -83,6 +83,10 @@ def build_eval_command(
     startup_timeout: int,
     n_threads: int,
     n_gpu_layers: int,
+    top_p: float,
+    top_k: int,
+    run_tag: str,
+    seed: int,
 ):
     script_dir = Path(__file__).resolve().parent
     if is_gguf_model(model_id):
@@ -107,6 +111,13 @@ def build_eval_command(
             cmd.extend(["--n_threads", str(n_threads)])
         if n_gpu_layers != 0:
             cmd.extend(["--n_gpu_layers", str(n_gpu_layers)])
+        cmd.extend(["--top_p", str(top_p)])
+        if top_k > 0:
+            cmd.extend(["--top_k", str(top_k)])
+        if run_tag:
+            cmd.extend(["--run_tag", run_tag])
+        if seed >= 0:
+            cmd.extend(["--seed", str(seed)])
         return cmd
 
     cmd = [
@@ -168,6 +179,10 @@ def main():
     parser.add_argument("--startup_timeout", type=int, default=300, help="GGUF server startup timeout in seconds")
     parser.add_argument("--n_threads", type=int, default=0, help="llama.cpp CPU threads for GGUF runs (0 = default)")
     parser.add_argument("--n_gpu_layers", type=int, default=0, help="llama.cpp GPU layers for GGUF runs (-1 = all layers)")
+    parser.add_argument("--top_p", type=float, default=1.0, help="Sampling top_p value for GGUF runs")
+    parser.add_argument("--top_k", type=int, default=0, help="Sampling top_k value for GGUF runs (0 = disabled)")
+    parser.add_argument("--run_tag", type=str, default="", help="Optional result filename suffix for GGUF runs")
+    parser.add_argument("--seed", type=int, default=-1, help="llama.cpp server seed for GGUF runs (-1 = default/random)")
     parser.add_argument("--no_prefetch", action="store_true", help="Disable background prefetching")
     args = parser.parse_args()
 
@@ -196,6 +211,10 @@ def main():
     print(f"Startup timeout: {args.startup_timeout}s")
     print(f"n_threads: {args.n_threads if args.n_threads > 0 else 'default'}")
     print(f"n_gpu_layers: {args.n_gpu_layers if args.n_gpu_layers != 0 else 'default/cpu'}")
+    print(f"top_p: {args.top_p}")
+    print(f"top_k: {args.top_k if args.top_k > 0 else 'disabled'}")
+    print(f"run_tag: {args.run_tag if args.run_tag else 'none'}")
+    print(f"seed: {args.seed if args.seed >= 0 else 'default/random'}")
     print(f"Prefetch enabled: {not args.no_prefetch}")
 
     with ThreadPoolExecutor(max_workers=1) as executor:
@@ -233,6 +252,10 @@ def main():
                 args.startup_timeout,
                 args.n_threads,
                 args.n_gpu_layers,
+                args.top_p,
+                args.top_k,
+                args.run_tag,
+                args.seed,
             )
             log_name = model_id.replace("/", "__").replace("\\", "__") + ".log"
             log_path = project_root / args.log_dir / log_name
@@ -254,6 +277,10 @@ def main():
                     "log_file": str(log_path),
                     "prefetch_message": prefetch_message,
                     "prefetch_error": prefetch_error,
+                    "top_p": args.top_p,
+                    "top_k": args.top_k,
+                    "run_tag": args.run_tag,
+                    "seed": args.seed,
                 }
             )
             print(f"[Run] Finished {model_id} with status={status} in {elapsed:.2f}s")

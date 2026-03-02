@@ -1,0 +1,74 @@
+{
+  "phase": "phase3f-statistical-analysis",
+  "generated_at_epoch": 1772435078.870741,
+  "models": [
+    {
+      "model_label": "unsloth_Llama-3.1-8B-Instruct-GGUF",
+      "flex_mean": 0.04285714285714286,
+      "strict_mean": 0.0,
+      "flex_mean_bootstrap_ci_95": {
+        "low": 0.01904761904761905,
+        "high": 0.07142857142857144
+      },
+      "spearman_temp_vs_flex": {
+        "rho": -0.44841560524130225,
+        "p_value": 0.041470689676736554
+      },
+      "best_minus_t0_flex": 0.1,
+      "avg_time_seconds": 621.0729218891689,
+      "flex_std": 0.06598288790738581
+    },
+    {
+      "model_label": "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "flex_mean": 0.08095238095238096,
+      "strict_mean": 0.0,
+      "flex_mean_bootstrap_ci_95": {
+        "low": 0.05238095238095238,
+        "high": 0.10952380952380952
+      },
+      "spearman_temp_vs_flex": {
+        "rho": 0.0861460984507896,
+        "p_value": 0.71042200999268
+      },
+      "best_minus_t0_flex": 0.1,
+      "avg_time_seconds": 765.031180938085,
+      "flex_std": 0.06632565846278153
+    },
+    {
+      "model_label": "unsloth_Phi-4-mini-reasoning-GGUF",
+      "flex_mean": 0.03333333333333333,
+      "strict_mean": 0.0,
+      "flex_mean_bootstrap_ci_95": {
+        "low": 0.014285714285714287,
+        "high": 0.05238095238095238
+      },
+      "spearman_temp_vs_flex": {
+        "rho": -0.20018544278439163,
+        "p_value": 0.3842744735120101
+      },
+      "best_minus_t0_flex": 0.1,
+      "avg_time_seconds": 482.8900679520198,
+      "flex_std": 0.04714045207910317
+    },
+    {
+      "model_label": "unsloth_gemma-3-4b-it-GGUF",
+      "flex_mean": 0.03333333333333333,
+      "strict_mean": 0.0,
+      "flex_mean_bootstrap_ci_95": {
+        "low": 0.009523809523809525,
+        "high": 0.06190476190476191
+      },
+      "spearman_temp_vs_flex": {
+        "rho": 0.4043659355430417,
+        "p_value": 0.06904525837570599
+      },
+      "best_minus_t0_flex": 0.2,
+      "avg_time_seconds": 627.4699155830201,
+      "flex_std": 0.06424160744396211
+    }
+  ],
+  "notes": [
+    "Spearman is computed on temperature vs flexible-extract values across the 21-point grid.",
+    "Bootstrap CI is over temperature-level performance values, not per-item predictions."
+  ]
+}

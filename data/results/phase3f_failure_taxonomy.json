@@ -1,0 +1,68 @@
+{
+  "phase": "phase3f-failure-taxonomy",
+  "generated_at_epoch": 1772435079.5480702,
+  "taxonomy_definition": {
+    "strict_zero": "Model has strict-match 0.0 across all temperatures.",
+    "low_flex_band": "Model flexible-extract mean <= 0.05.",
+    "high_latency": "Average per-temperature run time >= 700s.",
+    "high_temperature_sensitivity": "Flexible-extract std >= 0.04 across temperatures."
+  },
+  "models": [
+    {
+      "model_label": "unsloth_Llama-3.1-8B-Instruct-GGUF",
+      "categories": [
+        "strict_zero",
+        "low_flex_band",
+        "high_temperature_sensitivity"
+      ],
+      "stats": {
+        "strict_zero": true,
+        "flex_mean": 0.04285714285714286,
+        "flex_std": 0.06598288790738581,
+        "avg_time_seconds": 621.0729218891689
+      }
+    },
+    {
+      "model_label": "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "categories": [
+        "strict_zero",
+        "high_latency",
+        "high_temperature_sensitivity"
+      ],
+      "stats": {
+        "strict_zero": true,
+        "flex_mean": 0.08095238095238096,
+        "flex_std": 0.06632565846278153,
+        "avg_time_seconds": 765.031180938085
+      }
+    },
+    {
+      "model_label": "unsloth_Phi-4-mini-reasoning-GGUF",
+      "categories": [
+        "strict_zero",
+        "low_flex_band",
+        "high_temperature_sensitivity"
+      ],
+      "stats": {
+        "strict_zero": true,
+        "flex_mean": 0.03333333333333333,
+        "flex_std": 0.04714045207910317,
+        "avg_time_seconds": 482.8900679520198
+      }
+    },
+    {
+      "model_label": "unsloth_gemma-3-4b-it-GGUF",
+      "categories": [
+        "strict_zero",
+        "low_flex_band",
+        "high_temperature_sensitivity"
+      ],
+      "stats": {
+        "strict_zero": true,
+        "flex_mean": 0.03333333333333333,
+        "flex_std": 0.06424160744396211,
+        "avg_time_seconds": 627.4699155830201
+      }
+    }
+  ]
+}

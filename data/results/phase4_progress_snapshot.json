@@ -1,0 +1,95 @@
+{
+  "generated_at_epoch": 1772435536.0386639,
+  "main": {
+    "arc_easy": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    },
+    "arc_challenge": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    },
+    "commonsense_qa": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    },
+    "piqa": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    },
+    "hellaswag": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    }
+  },
+  "controls": {
+    "phase4-control-top_p_0p9": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    },
+    "phase4-control-top_k_40": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    }
+  },
+  "repeats": {
+    "phase4-repeat-seed42": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    },
+    "phase4-repeat-seed314": {
+      "unsloth_Llama-3.1-8B-Instruct-GGUF": 0,
+      "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF": 0,
+      "unsloth_Phi-4-mini-reasoning-GGUF": 0,
+      "unsloth_gemma-3-4b-it-GGUF": 0
+    }
+  },
+  "log_tail": [
+    "Fetching 1 files: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 295.83it/s]",
+    "Starting LOCAL CPU evaluation pipeline...",
+    "",
+    "======================================",
+    "Starting pipeline for unsloth/Llama-3.1-8B-Instruct-GGUF",
+    "======================================",
+    "Looking for a 4-bit GGUF file in unsloth/Llama-3.1-8B-Instruct-GGUF...",
+    "Found: Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+    "Downloading Llama-3.1-8B-Instruct-Q4_K_M.gguf (this may take a while)...",
+    "Downloaded to Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+    "Warning: GPU offload requested but current llama.cpp build has no GPU-offload support; continuing on CPU.",
+    "Starting llama_cpp server: /home/regulus/Research/slm-temperature-study/venv/bin/python -m llama_cpp.server --model Llama-3.1-8B-Instruct-Q4_K_M.gguf --n_ctx 4096 --port 8000 --host 127.0.0.1 --n_threads 4",
+    "Server is up and running!",
+    "",
+    "--- Evaluating Llama-3.1-8B-Instruct-Q4_K_M.gguf at T=0.0 ---",
+    "",
+    "Generating train split:   0%|          | 0/2251 [00:00<?, ? examples/s]",
+    "Generating train split: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2251/2251 [00:00<00:00, 23219.40 examples/s]",
+    "",
+    "Generating test split:   0%|          | 0/2376 [00:00<?, ? examples/s]",
+    "Generating test split: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2376/2376 [00:00<00:00, 115486.38 examples/s]",
+    "",
+    "Generating validation split:   0%|          | 0/570 [00:00<?, ? examples/s]",
+    "Generating validation split: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 570/570 [00:00<00:00, 34205.42 examples/s]",
+    "Overwriting default num_fewshot of arc_easy from None to 0",
+    "",
+    "  0%|          | 0/10 [00:00<?, ?it/s]",
+    "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 10/10 [00:00<00:00, 287.73it/s]",
+    "",
+    "  0%|          | 0/40 [00:00<?, ?it/s]"
+  ]
+}

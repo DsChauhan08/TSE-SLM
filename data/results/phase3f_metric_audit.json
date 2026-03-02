@@ -1,0 +1,72 @@
+{
+  "phase": "phase3f-metric-audit",
+  "generated_at_epoch": 1772435078.8702624,
+  "models": [
+    {
+      "model_label": "unsloth_Llama-3.1-8B-Instruct-GGUF",
+      "records": 21,
+      "strict_zero_all": true,
+      "flex_positive_any": true,
+      "strict_flex_divergence": true,
+      "flex_at_t0": 0.1,
+      "best_flex": 0.2,
+      "best_temp": 0.5,
+      "flex_range": 0.2
+    },
+    {
+      "model_label": "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "records": 21,
+      "strict_zero_all": true,
+      "flex_positive_any": true,
+      "strict_flex_divergence": true,
+      "flex_at_t0": 0.1,
+      "best_flex": 0.2,
+      "best_temp": 1.2,
+      "flex_range": 0.2
+    },
+    {
+      "model_label": "unsloth_Phi-4-mini-reasoning-GGUF",
+      "records": 21,
+      "strict_zero_all": true,
+      "flex_positive_any": true,
+      "strict_flex_divergence": true,
+      "flex_at_t0": 0.0,
+      "best_flex": 0.1,
+      "best_temp": 0.3,
+      "flex_range": 0.1
+    },
+    {
+      "model_label": "unsloth_gemma-3-4b-it-GGUF",
+      "records": 21,
+      "strict_zero_all": true,
+      "flex_positive_any": true,
+      "strict_flex_divergence": true,
+      "flex_at_t0": 0.0,
+      "best_flex": 0.2,
+      "best_temp": 1.5,
+      "flex_range": 0.2
+    }
+  ],
+  "global_flags": [
+    {
+      "model_label": "unsloth_Llama-3.1-8B-Instruct-GGUF",
+      "flag": "strict_flex_divergence",
+      "detail": "Strict-match is zero for all temperatures while flexible-extract has positive values."
+    },
+    {
+      "model_label": "TeichAI_Qwen3-4B-Thinking-2507-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "flag": "strict_flex_divergence",
+      "detail": "Strict-match is zero for all temperatures while flexible-extract has positive values."
+    },
+    {
+      "model_label": "unsloth_Phi-4-mini-reasoning-GGUF",
+      "flag": "strict_flex_divergence",
+      "detail": "Strict-match is zero for all temperatures while flexible-extract has positive values."
+    },
+    {
+      "model_label": "unsloth_gemma-3-4b-it-GGUF",
+      "flag": "strict_flex_divergence",
+      "detail": "Strict-match is zero for all temperatures while flexible-extract has positive values."
+    }
+  ]
+}
